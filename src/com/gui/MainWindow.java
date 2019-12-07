@@ -7,17 +7,34 @@ import lc.kra.system.keyboard.event.GlobalKeyEvent;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.util.Map;
 
 public class MainWindow extends JFrame {
 
-  private static boolean botRunning;
+  private GlobalKeyboardHook keyboardHook;
+  private boolean controlPressed;
+  private boolean botRunning;
   private Thread botThread;
 
   MainWindow() {
     super(GUI_Config.APPLICATION_NAME);
+
+    // Might throw a UnsatisfiedLinkError if the native library fails to load or a RuntimeException if hooking fails
+    keyboardHook = new GlobalKeyboardHook(true); // Use false here to switch to hook instead of raw input
+
+    keyboardHook.addKeyListener(new GlobalKeyAdapter() {
+      @Override
+      public void keyPressed(GlobalKeyEvent event) {
+        if (event.getVirtualKeyCode() == GlobalKeyEvent.VK_CONTROL) setBGColor(Color.GREEN);
+        else setBGColor(Color.CYAN);
+      }
+
+      @Override
+      public void keyReleased(GlobalKeyEvent event) {
+        if (event.getVirtualKeyCode() == GlobalKeyEvent.VK_C) setBGColor(Color.RED);
+        else setBGColor(Color.MAGENTA);
+      }
+    });
+
     try {
       UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
     } catch (IllegalAccessException | InstantiationException | UnsupportedLookAndFeelException | ClassNotFoundException e) {
@@ -25,22 +42,7 @@ public class MainWindow extends JFrame {
     }
     setSize(1920, 1080);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    addKeyListener(new KeyListener() {
-      @Override
-      public void keyTyped(KeyEvent e) {
-
-      }
-
-      @Override
-      public void keyPressed(KeyEvent e) {
-        setBGColor(Color.GREEN);
-      }
-
-      @Override
-      public void keyReleased(KeyEvent e) {
-        setBGColor(Color.RED);
-      }
-    });
+    Runtime.getRuntime().addShutdownHook(new Thread(() -> keyboardHook.shutdownHook()));
     setVisible(true);
   }
 
@@ -49,41 +51,6 @@ public class MainWindow extends JFrame {
   }
 
   public static void main(String[] args) {
-    // Might throw a UnsatisfiedLinkError if the native library fails to load or a RuntimeException if hooking fails
-    GlobalKeyboardHook keyboardHook = new GlobalKeyboardHook(true); // Use false here to switch to hook instead of raw input
-
-    System.out.println("Global keyboard hook successfully started, press [escape] key to shutdown. Connected keyboards:");
-
-    for (Map.Entry<Long, String> keyboard : GlobalKeyboardHook.listKeyboards().entrySet()) {
-      System.out.format("%d: %s\n", keyboard.getKey(), keyboard.getValue());
-    }
-
-    keyboardHook.addKeyListener(new GlobalKeyAdapter() {
-
-      @Override
-      public void keyPressed(GlobalKeyEvent event) {
-        System.out.println(event);
-        if (event.getVirtualKeyCode() == GlobalKeyEvent.VK_ESCAPE) {
-          botRunning = false;
-        }
-      }
-
-      @Override
-      public void keyReleased(GlobalKeyEvent event) {
-        System.out.println(event);
-      }
-    });
-
-    try {
-      while (botRunning) {
-        Thread.sleep(128);
-      }
-    } catch (InterruptedException e) {
-      //Do nothing
-    } finally {
-      keyboardHook.shutdownHook();
-    }
-
     new MainWindow();
   }
 }
