@@ -24,14 +24,14 @@ public class MainWindow extends JFrame {
     keyboardHook.addKeyListener(new GlobalKeyAdapter() {
       @Override
       public void keyPressed(GlobalKeyEvent event) {
-        if (event.getVirtualKeyCode() == GlobalKeyEvent.VK_CONTROL) setBGColor(Color.GREEN);
-        else setBGColor(Color.CYAN);
+        if (event.getVirtualKeyCode() == GlobalKeyEvent.VK_CONTROL) controlPressed = true;
+        else if (event.getVirtualKeyCode() == GlobalKeyEvent.VK_C && controlPressed) killBot();
+        else if (event.getVirtualKeyCode() == GlobalKeyEvent.VK_R && controlPressed && !botRunning) runBot();
       }
 
       @Override
       public void keyReleased(GlobalKeyEvent event) {
-        if (event.getVirtualKeyCode() == GlobalKeyEvent.VK_C) setBGColor(Color.RED);
-        else setBGColor(Color.MAGENTA);
+        if (event.getVirtualKeyCode() == GlobalKeyEvent.VK_CONTROL) controlPressed = false;
       }
     });
 
@@ -40,12 +40,27 @@ public class MainWindow extends JFrame {
     } catch (IllegalAccessException | InstantiationException | UnsupportedLookAndFeelException | ClassNotFoundException e) {
       e.printStackTrace();
     }
-    setSize(1920, 1080);
+    setSize(1280, 720);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     Runtime.getRuntime().addShutdownHook(new Thread(() -> keyboardHook.shutdownHook()));
     setVisible(true);
   }
 
+  private void runBot() {
+    setBGColor(Color.GREEN);
+    botRunning = true;
+  }
+
+  private void killBot() {
+    setBGColor(Color.RED);
+    botRunning = false;
+  }
+
+  /**
+   * Set background color of main window
+   *
+   * @param c Color to set the background
+   */
   private void setBGColor(Color c) {
     getContentPane().setBackground(c);
   }
