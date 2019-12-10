@@ -374,7 +374,7 @@ public class MainWindow extends JFrame {
     characterSelectComboBox.setSelectedIndex(-1);
     characterSelectComboBox.addActionListener(e -> {
       if (!botRunning) {
-        selectedChampion = (String) ((JComboBox<String>) e.getSource()).getSelectedItem();
+        selectedChampion = (String) ((JComboBox<?>) e.getSource()).getSelectedItem();
         statusLabel.setText(String.format(GUI_Config.STATUS_LABEL_READY, selectedChampion, selectedRole));
         setBGColor(GUI_Config.BACKGROUND_COLOR);
       }
