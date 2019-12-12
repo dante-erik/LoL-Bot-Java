@@ -82,4 +82,14 @@ public class PixelGroup
 		
 		return visible;
 	}
+	
+	public String toString()
+	{
+		String str = "";
+		
+		for(int i = 0; i < pixels.size(); i++)
+			str += i+": "+pixels.get(i)+"\n";
+		
+		return str;
+	}
 }
