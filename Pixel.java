@@ -8,6 +8,7 @@ public class Pixel
 	private int y;
 	private Color color;
 	
+	//create Pixel with (x,y) and (r,g,b)
 	public Pixel(int x, int y, int r, int g, int b)
 	{
 		this.x = x;
@@ -15,6 +16,7 @@ public class Pixel
 		color = new Color(r,g,b);
 	}
 	
+	//create Pixel with (x,y) and Color
 	public Pixel(int x, int y, Color c)
 	{
 		this.x = x;
@@ -23,6 +25,8 @@ public class Pixel
 		color = new Color(c.getRed(), c.getGreen(), c.getBlue());
 	}
 	
+	//compare Pixel color to Color of Pixel on the screen at same x,y
+	//return true if Colors are exact same
 	public boolean equalToScreen() throws AWTException
 	{
 		Robot r = new Robot();
@@ -30,6 +34,8 @@ public class Pixel
 		return color.equals(r.getPixelColor(x,y));
 	}
 	
+	//compare Pixel color to Color of Pixel on the screen at same x,y
+	//return true if Colors RGB are within tolerance range
 	public boolean equalToScreen(int tolerance) throws AWTException
 	{
 		Robot r = new Robot();
