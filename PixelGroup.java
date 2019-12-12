@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class PixelGroup
 {
 	private ArrayList<Pixel> pixels = new ArrayList<Pixel>();
