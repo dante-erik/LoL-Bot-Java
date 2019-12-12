@@ -70,6 +70,6 @@ public class Pixel
 	
 	public String toString()
 	{
-		return "("+x+", "+y+", "+color+")";
+		return "("+x+", "+y+", "+color.getRed()+", "+color.getGreen()+", "+color.getBlue()+")";
 	}
 }
