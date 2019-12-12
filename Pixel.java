@@ -38,24 +38,34 @@ public class Pixel
 	
 	//compare Pixel color to Color of Pixel on the screen at same x,y
 	//return true if Colors RGB are within tolerance range
-	public boolean equalToScreen(int tolerance) throws AWTException
+	public boolean equalToScreen(int tolerance)
 	{
-		Robot r = new Robot();
-		Color c = r.getPixelColor(x,y);
+		try
+		{
+			Robot r = new Robot();
+			Color c = r.getPixelColor(x,y);
 		
-		//if color.getRed() is outside of the range of c.getRed() +- tolerance, return false
-		if(!(color.getRed() <= c.getRed() + tolerance && color.getRed() >= c.getRed() - tolerance))
-			return false;
+			//if color.getRed() is outside of the range of c.getRed() +- tolerance, return false
+			if(!(color.getRed() <= c.getRed() + tolerance && color.getRed() >= c.getRed() - tolerance))
+				return false;
 		
-		//if color.getGreen() is outside of the range of c.getGreen() +- tolerance, return false
-		if(!(color.getGreen() <= c.getGreen() + tolerance && color.getGreen() >= c.getGreen() - tolerance))
-			return false;
+			//if color.getGreen() is outside of the range of c.getGreen() +- tolerance, return false
+			if(!(color.getGreen() <= c.getGreen() + tolerance && color.getGreen() >= c.getGreen() - tolerance))
+				return false;
 		
-		//if color.getBlue() is outside of the range of c.getBlue() +- tolerance, return false
-		if(!(color.getBlue() <= c.getBlue() + tolerance && color.getBlue() >= c.getBlue() - tolerance))
-			return false;
+			//if color.getBlue() is outside of the range of c.getBlue() +- tolerance, return false
+			if(!(color.getBlue() <= c.getBlue() + tolerance && color.getBlue() >= c.getBlue() - tolerance))
+				return false;
 		
-		return true;
+			return true;
+		}
+		catch(AWTException ex)
+		{
+			System.out.println("AWTException error in Pixel.java");
+		}
+		
+		//default to false if try{}catch{} fails
+		return false;
 	}
 	
 	public String toString()
