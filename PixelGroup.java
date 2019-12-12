@@ -5,11 +5,23 @@ public class PixelGroup
 	private ArrayList<Pixel> pixels = new ArrayList<Pixel>();
 	private boolean visible;
 	
-	//PixelGroups must be given an ArrayList of Pixel to be created
+	//default constructor has no Pixels
+	public PixelGroup()
+	{
+		visible = false;
+	}
+	
+	//PixelGroups given an ArrayList<Pixel> to add to ArrayList<Pixel> pixel
 	public PixelGroup(ArrayList<Pixel> p)
 	{
 		pixels.addAll(p);
 		visible = false;
+	}
+	
+	//add a Pixel to the ArrayList<Pixel> pixels
+	public void addPixel(Pixel p)
+	{
+		pixels.add(p);
 	}
 	
 	/*
