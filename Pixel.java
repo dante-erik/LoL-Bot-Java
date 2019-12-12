@@ -25,6 +25,7 @@ public class Pixel
 		color = new Color(c.getRed(), c.getGreen(), c.getBlue());
 	}
 	
+	/*
 	//compare Pixel color to Color of Pixel on the screen at same x,y
 	//return true if Colors are exact same
 	public boolean equalToScreen() throws AWTException
@@ -33,6 +34,7 @@ public class Pixel
 		
 		return color.equals(r.getPixelColor(x,y));
 	}
+	*/
 	
 	//compare Pixel color to Color of Pixel on the screen at same x,y
 	//return true if Colors RGB are within tolerance range
