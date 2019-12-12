@@ -19,7 +19,7 @@ public class PixelGroup
 	}
 	
 	//add a Pixel to the ArrayList<Pixel> pixels
-	public void addPixel(Pixel p)
+	public void add(Pixel p)
 	{
 		pixels.add(p);
 	}
