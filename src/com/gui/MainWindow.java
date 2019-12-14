@@ -41,6 +41,18 @@ public class MainWindow extends JFrame {
     loadChampions();
     initializeElements();
     setVisible(true);
+//    struggleHopelessly();
+  }
+
+  /**
+   * Stress test function that locks the main Thread
+   *
+   * @deprecated
+   */
+  @Deprecated
+  private void struggleHopelessly() {
+    while (true) {
+    }
   }
 
   /**
@@ -501,6 +513,25 @@ public class MainWindow extends JFrame {
         statusLabel.setText(String.format(GUI_Config.STATUS_LABEL_PLAYING, selectedChampion, selectedRole));
         setBGColor(Color.GREEN);
         botRunning = true;
+        botThread = new Thread() {
+          /**
+           * If this thread was constructed using a separate
+           * {@code Runnable} run object, then that
+           * {@code Runnable} object's {@code run} method is called;
+           * otherwise, this method does nothing and returns.
+           * <p>
+           * Subclasses of {@code Thread} should override this method.
+           *
+           * @see #start()
+           * @see #stop()
+           */
+          @Override
+          public void run() {
+            // TODO Implement Bot Main in this function
+            super.run();
+          }
+        };
+        botThread.start();
       }
     }
   }
@@ -515,6 +546,7 @@ public class MainWindow extends JFrame {
       statusLabel.setText(String.format(GUI_Config.STATUS_LABEL_READY, selectedChampion, selectedRole));
       setBGColor(Color.RED);
       botRunning = false;
+      botThread.interrupt();
     }
   }
 

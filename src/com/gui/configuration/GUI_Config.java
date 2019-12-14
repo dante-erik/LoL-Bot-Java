@@ -16,6 +16,7 @@ public class GUI_Config {
    *
    * @deprecated
    */
+  @Deprecated
   public static final Color BRIGHT_PINK_COLOR = new Color(255, 67, 84);
   public static final String CHARACTER_SELECT_LABEL = "Champion Select:";
   public static final String ROLE_SELECT_LABEL = "Role Select:";
