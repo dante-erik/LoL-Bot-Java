@@ -112,7 +112,7 @@ public class RobotPlus extends Robot {
         var yStart = MouseInfo.getPointerInfo().getLocation().getY();
         //an approximation of the distance formula for the distance between the cursor and the inputted x and y
         var milliseconds = fastDistance((int) xStart, (int) yStart, xEnd, yEnd);
-
+      
         mouseMove(xEnd, yEnd, (int) Math.round(milliseconds));
     }
 
