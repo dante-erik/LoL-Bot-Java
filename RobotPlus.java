@@ -77,7 +77,8 @@ public class RobotPlus extends Robot {
      * @author Erik Barbieri <Dohinkus>
      * @see Robot
      */
-    public RobotPlus() throws AWTException {
+    public RobotPlus() throws AWTException
+    {
         super();
         setAutoDelay(0);
     }
@@ -90,7 +91,8 @@ public class RobotPlus extends Robot {
      * @author Erik Barbieri <Dohinkus>
      * @see Robot
      */
-    public RobotPlus(int milliseconds) throws AWTException {
+    public RobotPlus(int milliseconds) throws AWTException
+    {
         super();
         setAutoDelay(milliseconds);
     }
@@ -104,21 +106,14 @@ public class RobotPlus extends Robot {
      * @author Erik Barbieri <Dohinkus>
      */
     @Override
-    public void mouseMove(int xEnd, int yEnd) {
+    public void mouseMove(int xEnd, int yEnd)
+    {
         var xStart = MouseInfo.getPointerInfo().getLocation().getX();
         var yStart = MouseInfo.getPointerInfo().getLocation().getY();
         //an approximation of the distance formula for the distance between the cursor and the inputted x and y
         var milliseconds = fastDistance((int) xStart, (int) yStart, xEnd, yEnd);
-
-        //try{}catch{} because throws AWTException caused error: cannot override Robot mouseMove(int x, int y)
-        try {
-            mouseMove(xEnd, yEnd, (int) Math.round(milliseconds));
-        } catch (AWTException ex) {
-            //print the text of the caught error
-            System.err.println(ex.getMessage());
-            //print how the error happened, full calls
-            ex.printStackTrace();
-        }
+      
+        mouseMove(xEnd, yEnd, (int) Math.round(milliseconds));
     }
 
     /**
@@ -128,18 +123,16 @@ public class RobotPlus extends Robot {
      * @param xEnd Final x-coordinate for cursor after move
      * @param yEnd Final y-coordinate for cursor after move
      * @param milliseconds Time (in ms) to move to given position
-     * @throws AWTException Construction of helper Robot can throw AWTException
      * @author Erik Barbieri <Dohinkus>
      */
-    public void mouseMove(int xEnd, int yEnd, int milliseconds) throws AWTException {
+    public void mouseMove(int xEnd, int yEnd, int milliseconds)
+    {
         var xStart = MouseInfo.getPointerInfo().getLocation().getX();
         var yStart = MouseInfo.getPointerInfo().getLocation().getY();
         var xDiff = xEnd - xStart;
         var yDiff = yEnd - yStart;
 
-        var r = new Robot();
-
-        r.setAutoDelay(1);
+        setAutoDelay(1);
 
         //currentMillisecond starting at 0 would move the cursor to its current location (pointless action), so currentMillisecond starts at 1
         for (var currentMillisecond = 1; currentMillisecond <= milliseconds; currentMillisecond++)
@@ -148,7 +141,7 @@ public class RobotPlus extends Robot {
                     (int) (((currentMillisecond / milliseconds) * yDiff) + yStart));
 
         if (autoDelay > 0)
-            r.delay(autoDelay);
+            delay(autoDelay);
     }
 
     /**
@@ -164,7 +157,8 @@ public class RobotPlus extends Robot {
      * @see Robot
      * @author Erik Barbieri <Dohinkus>
      */
-    public void mouseClick(int button) throws AWTException, IllegalArgumentException {
+    public void mouseClick(int button) throws IllegalArgumentException
+    {
         mouseClick(button, 25);
     }
 
@@ -177,39 +171,40 @@ public class RobotPlus extends Robot {
      *
      * @param button Which of the two buttons to click
      * @param milliseconds How long to hold the button down
-     * @throws AWTException Construction of helper Robot can throw AWTException
      * @throws IllegalArgumentException Calling mousePress (and mouseRelease) can throw this
      * @see Robot
      * @author Erik Barbieri <Dohinkus>
      */
-    public void mouseClick(int button, int milliseconds) throws AWTException, IllegalArgumentException {
-        var r = new Robot();
+    public void mouseClick(int button, int milliseconds) throws IllegalArgumentException
+    {
         //left click
-        if (button == 1) {
-            r.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-            r.delay(milliseconds);
-            r.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        if (button == 1)
+        {
+            mousePress(InputEvent.BUTTON1_DOWN_MASK);
+            delay(milliseconds);
+            mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
         }
         //right click
-        if (button == 2) {
-            r.mousePress(InputEvent.BUTTON2_DOWN_MASK);
-            r.delay(milliseconds);
-            r.mouseRelease(InputEvent.BUTTON2_DOWN_MASK);
+        if (button == 2)
+        {
+            mousePress(InputEvent.BUTTON2_DOWN_MASK);
+            delay(milliseconds);
+            mouseRelease(InputEvent.BUTTON2_DOWN_MASK);
         }
 
         if (autoDelay > 0)
-            r.delay(autoDelay);
+            delay(autoDelay);
     }
 
     /**
      * Clicks every key in a given String (in order) with each keypress lasting 50 ms.
      *
      * @param str String of keys to press (must be lowercase)
-     * @throws AWTException Construction of helper Robot can throw AWTException
      * @see Robot
      * @author Erik Barbieri <Dohinkus>
      */
-    public void keyClick(String str) throws AWTException {
+    public void keyClick(String str)
+    {
         keyClick(str, 50);
     }
 
@@ -219,24 +214,24 @@ public class RobotPlus extends Robot {
      *
      * @param str String of keys to press (must be lowercase)
      * @param milliseconds Time to hold down each key during keypress
-     * @throws AWTException Construction of helper Robot can throw AWTException
      * @see Robot
      * @author Erik Barbieri <Dohinkus>
      */
-    public void keyClick(String str, int milliseconds) throws AWTException {
-        var r = new Robot();
+    public void keyClick(String str, int milliseconds)
+    {
         //[2][36] space, a-z, 0-9
         //[0][i] for .equals check
         //[1][i] for robot
-        for (int i = 0; i < str.length(); i++) {
+        for (int i = 0; i < str.length(); i++)
+        {
             var keyCode = keyLookup.get(str.charAt(i));
-            r.keyPress(keyCode);
-            r.delay(milliseconds);
-            r.keyRelease(keyCode);
+            keyPress(keyCode);
+            delay(milliseconds);
+            keyRelease(keyCode);
         }
 
         if (autoDelay > 0)
-            r.delay(autoDelay);
+            delay(autoDelay);
     }
 
     /**
@@ -255,7 +250,8 @@ public class RobotPlus extends Robot {
      * @deprecated
      */
     @Deprecated
-    protected ArrayList<Integer> stringToKeypress(String str) {
+    protected ArrayList<Integer> stringToKeypress(String str)
+    {
         var keyPresses = new ArrayList<Integer>(str.length());
         for (var i = 0; i < str.length(); ++i)
             keyPresses.add(keyLookup.get(str.charAt(i)));
@@ -266,11 +262,11 @@ public class RobotPlus extends Robot {
      * Clicks a key associated to the given key code for 50 ms.
      *
      * @param key KeyEvent code of key to press
-     * @throws AWTException Construction of helper Robot can throw AWTException
      * @see Robot
      * @author Erik Barbieri <Dohinkus>
      */
-    public void keyClick(int key) throws AWTException {
+    public void keyClick(int key)
+    {
         keyClick(key, 50);
     }
 
@@ -280,18 +276,17 @@ public class RobotPlus extends Robot {
      *
      * @param key KeyEvent code of key to press
      * @param milliseconds Time to hold the key down
-     * @throws AWTException Construction of helper Robot can throw AWTException
      * @see Robot
      * @author Erik Barbieri <Dohinkus>
      */
-    public void keyClick(int key, int milliseconds) throws AWTException {
-        var r = new Robot();
-        r.keyPress(key);
-        r.delay(milliseconds);
-        r.keyRelease(key);
+    public void keyClick(int key, int milliseconds)
+    {
+        keyPress(key);
+        delay(milliseconds);
+        keyRelease(key);
 
         if (autoDelay > 0)
-            r.delay(autoDelay);
+            delay(autoDelay);
     }
 
     // It hurts me that this is done this way. Generally if the
@@ -308,7 +303,8 @@ public class RobotPlus extends Robot {
      * @author Erik Barbieri <Dohinkus>
      */
     @Override
-    public void setAutoDelay(int milliseconds) {
+    public void setAutoDelay(int milliseconds)
+    {
         autoDelay = milliseconds;
     }
 
@@ -319,7 +315,8 @@ public class RobotPlus extends Robot {
      * @author Erik Barbieri <Dohinkus>
      */
     @Override
-    public int getAutoDelay() {
+    public int getAutoDelay()
+    {
         return autoDelay;
     }
 
@@ -331,7 +328,8 @@ public class RobotPlus extends Robot {
      * @return floor integer square root of n
      * @author Dante Barbieri <pulchroxloom>
      */
-    protected int getLowerSqrt(int n) {
+    protected int getLowerSqrt(int n)
+    {
         for (var i = 0; i < n; ++i) if ((i * i) > n) return i - 1;
         return n;
     }
@@ -349,7 +347,8 @@ public class RobotPlus extends Robot {
      * @return square root of n (within small error)
      * @author Dante Barbieri <pulchroxloom>
      */
-    protected double fastSqrt(int n) {
+    protected double fastSqrt(int n)
+    {
         var i = getLowerSqrt(n);
         return i + ((n - (i * i)) / ((i << 1) + 1d));
     }
@@ -364,7 +363,8 @@ public class RobotPlus extends Robot {
      * @return cartesian distance between points 1 and 2 to within small error
      * @author Dante Barbieri <pulchroxloom>
      */
-    public double fastDistance(int x1, int y1, int x2, int y2) {
+    public double fastDistance(int x1, int y1, int x2, int y2)
+    {
         var deltaX = x2 - x1;
         var deltaY = y2 - y1;
         return fastSqrt((deltaX) * (deltaX) + (deltaY) * (deltaY));
@@ -380,7 +380,8 @@ public class RobotPlus extends Robot {
      * @return random number between min and max using System.nanoTime() as seed
      * @author Erik Barbieri <Dohinkus>
      */
-    public int getRandInt(int min, int max) {
+    public int getRandInt(int min, int max)
+    {
         var x = System.nanoTime();
 
         x ^= (x << 21);
