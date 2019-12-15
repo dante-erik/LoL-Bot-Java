@@ -24,28 +24,6 @@ public class PixelGroup
 		pixels.add(p);
 	}
 	
-	/*
-	//updates the boolean visible of the PixelGroup
-	//visible becomes true if ALL Pixels in the PixelGroup are visible on the screen
-	public void updateBoolean()
-	{
-		//true until proven false
-		visible = true;
-		
-		//check if each Pixel is visible on the screen
-		for(int i = 0; i < pixels.size(); i++)
-		{
-			//if the pixel being scanned is not visible, visible is false
-			if(!pixels.get(i).equalToScreen())
-			{
-				visible = false;
-				//loop is ended so the remaining pixels are not scanned, efficient
-				i = pixels.size();
-			}
-		}
-	}
-	*/
-	
 	//updates the boolean visible of the PixelGroup
 	//visible becomes true if ALL Pixels in the PixelGroup are visible with a tolerance for N difference in RGB values
 	public void updateBoolean(int tolerance)
