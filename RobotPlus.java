@@ -85,7 +85,7 @@ public class RobotPlus extends Robot {
      */
     public RobotPlus() throws AWTException
     {
-		this.autoDelay = 0;
+		autoDelay = 0;
     }
 
     /**
@@ -98,7 +98,7 @@ public class RobotPlus extends Robot {
      */
     public RobotPlus(int milliseconds) throws AWTException
     {
-		this.autoDelay = milliseconds;
+		autoDelay = milliseconds;
     }
 
     /**
