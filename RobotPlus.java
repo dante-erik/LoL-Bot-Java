@@ -7,6 +7,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class RobotPlus extends Robot {
+	
+	/**
+	 * Maximum duration for mouseMove
+	 */
+    private final static int MAXIMUM_TIME_MOVE = 64;
+
     /**
      * Map<Character, Integer> connecting the Characters
      * to their KeyEvent code (which is an integer)
@@ -79,8 +85,7 @@ public class RobotPlus extends Robot {
      */
     public RobotPlus() throws AWTException
     {
-        super();
-        setAutoDelay(0);
+		this.autoDelay = 0;
     }
 
     /**
@@ -93,8 +98,7 @@ public class RobotPlus extends Robot {
      */
     public RobotPlus(int milliseconds) throws AWTException
     {
-        super();
-        setAutoDelay(milliseconds);
+		this.autoDelay = milliseconds;
     }
 
     /**
@@ -111,7 +115,7 @@ public class RobotPlus extends Robot {
         var xStart = MouseInfo.getPointerInfo().getLocation().getX();
         var yStart = MouseInfo.getPointerInfo().getLocation().getY();
         //an approximation of the distance formula for the distance between the cursor and the inputted x and y
-        var milliseconds = fastDistance((int) xStart, (int) yStart, xEnd, yEnd);
+        var milliseconds = Math.min(fastDistance((int) xStart, (int) yStart, xEnd, yEnd), MAXIMUM_TIME_MOVE);
       
         mouseMove(xEnd, yEnd, (int) Math.round(milliseconds));
     }
@@ -132,13 +136,15 @@ public class RobotPlus extends Robot {
         var xDiff = xEnd - xStart;
         var yDiff = yEnd - yStart;
 
-        setAutoDelay(1);
-
         //currentMillisecond starting at 0 would move the cursor to its current location (pointless action), so currentMillisecond starts at 1
-        for (var currentMillisecond = 1; currentMillisecond <= milliseconds; currentMillisecond++)
+        for (var currentMillisecond = 1; currentMillisecond <= milliseconds; ++currentMillisecond)
+		{
             //move cursor to new x y based on currentMillisecond
-            super.mouseMove((int) (((currentMillisecond / milliseconds) * xDiff) + xStart),
-                    (int) (((currentMillisecond / milliseconds) * yDiff) + yStart));
+            super.mouseMove((int) ((((double)currentMillisecond / milliseconds) * xDiff) + xStart),
+                    (int) ((((double)currentMillisecond / milliseconds) * yDiff) + yStart));
+			//each super.mouseMove call should take about 1 ms, so delay(1);
+			delay(1);
+		}
 
         if (autoDelay > 0)
             delay(autoDelay);
@@ -288,37 +294,29 @@ public class RobotPlus extends Robot {
         if (autoDelay > 0)
             delay(autoDelay);
     }
-
-    // It hurts me that this is done this way. Generally if the
-    // getters and setters do no checking (bounds checking, error checking,
-    // verification that the value makes sense at all), then the data member
-    // should be public but you're Overriding Java's bad design. Perhaps add
-    // some kind of Math.abs(milliseconds) test to ensure negative time is
-    // not set.
-
-    /**
-     * Sets autoDelay to the given number of milliseconds.
-     *
-     * @param milliseconds Value to set autoDelay to
-     * @author Erik Barbieri <Dohinkus>
-     */
-    @Override
-    public void setAutoDelay(int milliseconds)
-    {
-        autoDelay = milliseconds;
-    }
-
-    /**
-     * Returns value for autoDelay
-     *
-     * @return autoDelay number of milliseconds to wait.
-     * @author Erik Barbieri <Dohinkus>
-     */
-    @Override
-    public int getAutoDelay()
-    {
-        return autoDelay;
-    }
+	
+	/**
+	 * Sets local autoDelay int
+	 * 
+	 * @param milliseconds value
+	 * @author Erik Barbieri <Dohinkus>
+	 */
+	@Override
+	public void setAutoDelay(int milliseconds)
+	{
+		autoDelay = milliseconds;
+	}
+	
+	/**
+	 * Returns autoDelay
+	 *
+	 * @author Erik Barbieri <Dohinkus>
+	 */
+	@Override
+	public int getAutoDelay()
+	{
+		return autoDelay;
+	}
 
     /**
      * Calculates the Math.floor(Math.sqrt(n)) very quickly.
@@ -380,7 +378,7 @@ public class RobotPlus extends Robot {
      * @return random number between min and max using System.nanoTime() as seed
      * @author Erik Barbieri <Dohinkus>
      */
-    public int getRandInt(int min, int max)
+    public static int getRandInt(int min, int max)
     {
         var x = System.nanoTime();
 
