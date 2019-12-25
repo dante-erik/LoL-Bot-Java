@@ -82,7 +82,6 @@ public class Bot
 					champ.useSummonerSpells();
 					champ.retreat();
 					champ.buyItems();
-					//champ.recall();
 				}
 				else if(highHp.isVisible())
 				{

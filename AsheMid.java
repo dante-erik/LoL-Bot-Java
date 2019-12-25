@@ -21,8 +21,7 @@ public class AsheMid extends Champion
 	
 	public void retreat()
 	{
-		rp.mouseMove(0,0);
-		rp.mouseClick(1);
+		
 	}
 	
 	public void buyItems()

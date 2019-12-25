@@ -17,8 +17,7 @@ public abstract class Champion
 	
 	public void startQueue()
 	{
-		rp.mouseMove(500,500);
-		rp.mouseClick(2);
+		
 	}
 	
 	public void acceptMatch()
