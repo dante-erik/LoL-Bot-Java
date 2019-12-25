@@ -19,6 +19,11 @@ public class AsheMid extends Champion
 		
 	}
 	
+	public void useSummonerSpells()
+	{
+		
+	}
+	
 	public void retreat()
 	{
 		
