@@ -1,5 +1,9 @@
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.awt.Dimension;
+
 public class Bot
 {
+	public AtomicBoolean running;
 	private Champion champ;
 	private PixelGroup startQueueButton = new PixelGroup();
 	private PixelGroup acceptMatchButton = new PixelGroup();
@@ -14,13 +18,13 @@ public class Bot
 	private PixelGroup honorSelect = new PixelGroup();
 	private PixelGroup playAgainButton = new PixelGroup();
 	
-	public Bot(LoLRole role, String championName)
+	public Bot(LOLRole role, String championName, Dimension clientRes)
 	{
-		setup(role, championName);
-		run();
+		setup(role, championName, clientRes);
+		running = new AtomicBoolean(true);
 	}
 	
-	public void setup(LOLRole role, String championName)
+	public void setup(LOLRole role, String championName, Dimension clientRes)
 	{
 		switch(role)
 		{
@@ -68,15 +72,16 @@ public class Bot
 	
 	public void run()
 	{
-		while(true)
+		while(running.get())
 		{
 			if(inGame.isVisible())
 			{
 				if(lowHp.isVisible())
 				{
-					champ.retreat();
 					champ.useSummonerSpells();
-					champ.recall();
+					champ.retreat();
+					champ.buyItems();
+					//champ.recall();
 				}
 				else if(highHp.isVisible())
 				{
