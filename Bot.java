@@ -1,3 +1,4 @@
+import java.awt.AWTException;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.awt.Dimension;
 
@@ -18,13 +19,13 @@ public class Bot
 	private PixelGroup honorSelect = new PixelGroup();
 	private PixelGroup playAgainButton = new PixelGroup();
 	
-	public Bot(LOLRole role, String championName, Dimension clientRes)
+	public Bot(LOLRole role, String championName, Dimension clientRes) throws AWTException
 	{
 		setup(role, championName, clientRes);
 		running = new AtomicBoolean(true);
 	}
 	
-	public void setup(LOLRole role, String championName, Dimension clientRes)
+	public void setup(LOLRole role, String championName, Dimension clientRes) throws AWTException
 	{
 		switch(role)
 		{
@@ -70,7 +71,7 @@ public class Bot
 		playAgainButton.add(new Pixel());
 	}
 	
-	public void run()
+	public void run() throws AWTException
 	{
 		while(running.get())
 		{

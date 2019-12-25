@@ -1,6 +1,5 @@
 import java.awt.Robot;
 import java.awt.Color;
-import java.awt.AWTException;
 
 public class Pixel
 {

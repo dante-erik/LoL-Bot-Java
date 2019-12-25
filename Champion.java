@@ -4,9 +4,16 @@ public abstract class Champion
 {
 	protected RobotPlus rp = new RobotPlus();
 	
-	public Champion() throws AWTException
-	{
-	}
+	public Champion() throws AWTException {}
+	
+	public abstract void pickChampion();
+	public abstract void callRole();
+	public abstract void selectSummonerSpells();
+	public abstract void useSummonerSpells();
+	public abstract void retreat();
+	public abstract void buyItems();
+	public abstract void attack();
+	public abstract void castSpells();
 	
 	public void startQueue()
 	{
@@ -38,15 +45,4 @@ public abstract class Champion
 	{
 		
 	}
-	
-	//abstracts start here
-	
-	public abstract void pickChampion();
-	public abstract void callRole();
-	public abstract void selectSummonerSpells();
-	public abstract void useSummonerSpells();
-	public abstract void retreat();
-	public abstract void buyItems();
-	public abstract void attack();
-	public abstract void castSpells();
 }

@@ -2,9 +2,7 @@ import java.awt.AWTException;
 
 public class AsheMid extends Champion
 {
-	public AsheMid() throws AWTException
-	{
-	}
+	public AsheMid() throws AWTException {}
 	
 	public void pickChampion()
 	{
@@ -27,7 +25,7 @@ public class AsheMid extends Champion
 		rp.mouseClick(1);
 	}
 	
-	public void buyItems();
+	public void buyItems()
 	{
 		
 	}
