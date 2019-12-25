@@ -34,12 +34,12 @@ public class Bot
 				break;
 				
 			case JUNGLE:
-				if(championName.equals("Warwick")
+				if(championName.equals("Warwick"))
 					champ = new WarwickJungle();
 				break;
 				
 			case MID:
-				if(championName.equals("Ashe")
+				if(championName.equals("Ashe"))
 					champ = new AsheMid();
 				break;
 			
@@ -48,11 +48,11 @@ public class Bot
 				break;
 				
 			case SUPPORT:
-				if(championName.equals("Yuumi")
+				if(championName.equals("Yuumi"))
 					champ = new YuumiSupport();
 				break;
 				
-			default
+			default:
 				throw UnsupportedOperationException;
 				break;
 		}
