@@ -85,6 +85,8 @@ public class RobotPlus extends Robot {
      */
     public RobotPlus() throws AWTException
     {
+		super();
+		//use my delay, robot's calls too many times per method
 		autoDelay = 0;
     }
 
@@ -98,6 +100,8 @@ public class RobotPlus extends Robot {
      */
     public RobotPlus(int milliseconds) throws AWTException
     {
+		super();
+		//use my delay, robot's calls too many times per method
 		autoDelay = milliseconds;
     }
 
@@ -163,7 +167,7 @@ public class RobotPlus extends Robot {
      * @see Robot
      * @author Erik Barbieri <Dohinkus>
      */
-    public void mouseClick(int button) throws IllegalArgumentException
+    public void mouseClick(int button)
     {
         mouseClick(button, 25);
     }
@@ -177,29 +181,35 @@ public class RobotPlus extends Robot {
      *
      * @param button Which of the two buttons to click
      * @param milliseconds How long to hold the button down
-     * @throws IllegalArgumentException Calling mousePress (and mouseRelease) can throw this
      * @see Robot
      * @author Erik Barbieri <Dohinkus>
      */
-    public void mouseClick(int button, int milliseconds) throws IllegalArgumentException
+    public void mouseClick(int button, int milliseconds)
     {
-        //left click
-        if (button == 1)
-        {
-            mousePress(InputEvent.BUTTON1_DOWN_MASK);
-            delay(milliseconds);
-            mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-        }
-        //right click
-        if (button == 2)
-        {
-            mousePress(InputEvent.BUTTON2_DOWN_MASK);
-            delay(milliseconds);
-            mouseRelease(InputEvent.BUTTON2_DOWN_MASK);
-        }
+		try
+		{
+			//left click
+			if (button == 1)
+			{
+				mousePress(InputEvent.BUTTON1_DOWN_MASK);
+				delay(milliseconds);
+				mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+			}
+			//right click
+			if (button == 2)
+			{
+				mousePress(InputEvent.BUTTON2_DOWN_MASK);
+				delay(milliseconds);
+				mouseRelease(InputEvent.BUTTON2_DOWN_MASK);
+			}
 
-        if (autoDelay > 0)
-            delay(autoDelay);
+			if (autoDelay > 0)
+				delay(autoDelay);
+		}
+		catch(IllegalArgumentException ex)
+		{
+			System.out.println("IllegalArgumentException in mouseClick(int button, int milliseconds)");
+		}
     }
 
     /**
