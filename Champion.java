@@ -1,28 +1,20 @@
-public class Champion
+import java.awt.AWTException;
+
+public abstract class Champion
 {
-	public Champion(){}
+	protected RobotPlus rp = new RobotPlus();
+	
+	public Champion() throws AWTException
+	{
+	}
 	
 	public void startQueue()
 	{
-		
+		rp.mouseMove(500,500);
+		rp.mouseClick(2);
 	}
 	
 	public void acceptMatch()
-	{
-		
-	}
-	
-	public void selectChampion()
-	{
-		
-	}
-	
-	public void callRole()
-	{
-		
-	}
-	
-	public void selectSummonerSpells()
 	{
 		
 	}
@@ -46,4 +38,15 @@ public class Champion
 	{
 		
 	}
+	
+	//abstracts start here
+	
+	public abstract void pickChampion();
+	public abstract void callRole();
+	public abstract void selectSummonerSpells();
+	public abstract void useSummonerSpells();
+	public abstract void retreat();
+	public abstract void buyItems();
+	public abstract void attack();
+	public abstract void castSpells();
 }

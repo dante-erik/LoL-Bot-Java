@@ -1,6 +1,18 @@
 public class Bot
 {
 	private Champion champ;
+	private PixelGroup startQueueButton = new PixelGroup();
+	private PixelGroup acceptMatchButton = new PixelGroup();
+	private PixelGroup championSelect = new PixelGroup();
+	private PixelGroup flashHeal = new PixelGroup();
+	private PixelGroup flashSmite = new PixelGroup();
+	private PixelGroup loadScreen = new PixelGroup();
+	private PixelGroup inGame = new PixelGroup();
+	private PixelGroup fullHp = new PixelGroup();
+	private PixelGroup highHp = new PixelGroup();
+	private PixelGroup lowHp = new PixelGroup();
+	private PixelGroup honorSelect = new PixelGroup();
+	private PixelGroup playAgainButton = new PixelGroup();
 	
 	public Bot(LoLRole role, String championName)
 	{
@@ -40,14 +52,77 @@ public class Bot
 				break;
 		}
 		
-		//setup all pixel groups here (?)
+		startQueueButton.add(new Pixel());
+		acceptMatchButton.add(new Pixel());
+		championSelect.add(new Pixel());
+		flashHeal.add(new Pixel());
+		flashSmite.add(new Pixel());
+		loadScreen.add(new Pixel());
+		inGame.add(new Pixel());
+		fullHp.add(new Pixel());
+		highHp.add(new Pixel());
+		lowHp.add(new Pixel());
+		honorSelect.add(new Pixel());
+		playAgainButton.add(new Pixel());
 	}
 	
 	public void run()
 	{
 		while(true)
 		{
-			//check all PixelGroups with else if chain, make champ play game
+			if(inGame.isVisible())
+			{
+				if(lowHp.isVisible())
+				{
+					champ.retreat();
+					champ.useSummonerSpells();
+					champ.recall();
+				}
+				else if(highHp.isVisible())
+				{
+					champ.attack();
+					champ.castSpells();
+				}
+				else if(fullHp.isVisible())
+				{
+					champ.attack();
+				}
+			}
+			else
+			{
+				if(championSelect.isVisible())
+				{
+					champ.pickChampion();
+					champ.callRole();
+					champ.selectSummonerSpells();
+				
+					while(!loadScreen.isVisible())
+					{
+						System.out.println("Waiting to enter load screen");
+					}
+				
+					while(loadScreen.isVisible())
+					{
+						System.out.println("Waiting to enter game");
+					}
+				}
+				else if(acceptMatchButton.isVisible())
+				{
+					champ.acceptMatch();
+				}
+				else if(startQueueButton.isVisible())
+				{
+					champ.startQueue();
+				}
+				else if(playAgainButton.isVisible())
+				{
+					champ.playAgain();
+				}
+				else if(honorSelect.isVisible())
+				{
+					champ.honorTeammate();
+				}
+			}
 		}
 	}
 }
