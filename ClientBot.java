@@ -1,6 +1,6 @@
 import java.awt.AWTException;
 
-public class ClientBot
+public class ClientBot implements
 {
 	ClientPlayer player;
 	//all of these PixelGroups do not change based on champion
@@ -40,6 +40,10 @@ public class ClientBot
 		else if(honorSelect.isVisible())
 		{
 			player.honorTeammate();
+		}
+		else
+		{
+			System.out.println("I don't see anything");
 		}
 	}
 }
