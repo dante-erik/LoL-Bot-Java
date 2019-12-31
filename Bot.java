@@ -25,11 +25,15 @@ public class Bot
 			case JUNGLE:
 				if(championName.equals("Warwick"))
 					bot = new WarwickJungleBot();
+				else
+					throw UnsupportedOperationException
 				break;
 				
 			case MID:
 				if(championName.equals("Ashe"))
 					bot = new AsheMidBot();
+				else
+					throw UnsupportedOperationException
 				break;
 			
 			case ADC:
@@ -39,6 +43,8 @@ public class Bot
 			case SUPPORT:
 				if(championName.equals("Yuumi"))
 					bot = new YuumiSupportBot();
+				else
+					throw UnsupportedOperationException
 				break;
 				
 			default:
