@@ -1,0 +1,27 @@
+# Character File List
+# Lines preceded by # are comments, and ignored
+# Format:
+# Champion Name: Role1, Role2, ...
+# Champions can be split into multiple lines, for instance
+# Jax: Jungle
+# Jax: Top
+# Would register Jax as a Jungler and as a Top Laner
+
+# ADC Champions
+## Not yet implemented
+
+# Support Champions
+Yuumi: Support
+
+# Mid Champions
+Ashe: Mid
+Ezreal: Mid
+Jax: Mid
+LeBlanc: Mid
+
+# Jungle Champions
+Jax: Jungle
+Maokai: Jungle
+
+# Top Champions
+## Not yet implemented
