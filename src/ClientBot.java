@@ -1,4 +1,4 @@
-import java.awt.AWTException;
+import java.awt.*;
 
 public class ClientBot
 {
