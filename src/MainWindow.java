@@ -6,10 +6,13 @@ import javax.swing.Timer;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.*;
@@ -26,8 +29,10 @@ public class MainWindow extends JFrame {
     private Dimension selectedDimension;
     private Thread botThread;
     private Timer upTime;
+    private Timer botOutputTime;
     private Instant startTime;
     private HashMap<LOLRole, String[]> characters;
+    private ByteArrayOutputStream bos;
     private JPanel rootPanel;
     private JButton startBotButton;
     private JButton stopBotButton;
@@ -53,6 +58,8 @@ public class MainWindow extends JFrame {
     private JLabel currentChampionLabel;
     private JLabel timerLabel;
     private JPanel activeRunningLabel;
+    private JLabel botOutputLabel;
+    private JScrollPane botOutputScrollPanel;
 
     public MainWindow() {
         super(GUIProperties.APPLICATION_NAME);
@@ -124,6 +131,7 @@ public class MainWindow extends JFrame {
         resolutionComboBox.setFont(GUIProperties.STANDARD_FONT_LARGE);
         currentChampionLabel.setFont(GUIProperties.STANDARD_FONT_LARGE);
         timerLabel.setFont(GUIProperties.STANDARD_FONT_LARGE);
+        botOutputLabel.setFont(GUIProperties.MONOSPACED);
     }
 
     private void createUIComponents() {
@@ -189,6 +197,7 @@ public class MainWindow extends JFrame {
     private ActionListener createRoleButtonActionListener(JButton button, LOLRole role) {
         return e -> {
             selectedRole = role;
+            loadChampions();
             updateCharacterSelectComboBox();
             resetRoleButtonLookAndFeel();
             button.setFont(GUIProperties.STANDARD_BOLD_FONT);
@@ -214,9 +223,6 @@ public class MainWindow extends JFrame {
      * @return Map filled with data from the file
      */
     private HashMap<LOLRole, String[]> getCharacters(String fileInfo) {
-        fileInfo = fileInfo.substring(5);
-        fileInfo = "C:\\Users\\Dante Barbieri\\Documents\\LoL-GUI\\out\\production\\LoL-GUI\\resources\\Champions" +
-                ".txt";
         var champions = new HashMap<LOLRole, String[]>();
         var workingChampions = new HashMap<String, HashSet<LOLRole>>();
         try (Scanner scanner = new Scanner(new File(fileInfo))) {
@@ -285,7 +291,7 @@ public class MainWindow extends JFrame {
             selectedChampion = null;
             if (selectedRole != null)
                 statusLabel.setText(GUIProperties.STATUS_LABEL_CHAMPION);
-            characters = getCharacters(GUIProperties.RESOURCES_LOCATION + "Champions.txt");
+            characters = getCharacters(GUIProperties.CHAMPIONS_FILE);
         }
     }
 
@@ -372,25 +378,44 @@ public class MainWindow extends JFrame {
                 toggleSetupBotComponents();
                 botRunning = true;
                 botThread = new Thread() {
-//                    private Bot bot = new Bot(selectedRole, selectedChampion, selectedDimension);
+                    //                    private Bot bot = new Bot(selectedRole, selectedChampion, selectedDimension);
+
+                    @Override
+                    public synchronized void start() {
+                        super.start();
+                        bos = new ByteArrayOutputStream();
+                        System.setOut(new PrintStream(bos));
+                    }
 
                     @Override
                     public void run() {
                         super.run();
-//                        bot.run();
+                        //                        bot.run();
+                        var sb = new StringBuilder();
+                        for (var i = 0L; i < 10000L; ++i) sb.append("Test\n");
+                        System.out.println(sb);
                     }
 
                     @Override
                     public void interrupt() {
                         super.interrupt();
-//                        bot.running.compareAndSet(true, false);
+                        //                        bot.running.compareAndSet(true, false);
                     }
                 };
                 botThread.start();
                 startTime = Instant.now();
-                upTime = new Timer(1, e ->
-                        timerLabel.setText(String.format(GUIProperties.TIME_LABEL_FORMAT, durationToString(Duration.between(startTime, Instant.now())))));
+                upTime = new Timer(1, e -> timerLabel.setText(String.format(GUIProperties.TIME_LABEL_FORMAT,
+                        durationToString(Duration.between(startTime, Instant.now())))));
                 upTime.start();
+                botOutputTime = new Timer(1, e -> {
+                    botOutputLabel.setText("<html>" +
+                            bos.toString(StandardCharsets.UTF_8).replaceAll("&", "&amp").replaceAll("<", "&lt;")
+                                    .replaceAll(">", "&gt;").replaceAll("\"", "&quot").replaceAll("\n", "<br>")
+                                    .replaceAll("\t", "&#9") + "</html>");
+                    var sb = botOutputScrollPanel.getVerticalScrollBar();
+                    sb.setValue(sb.getMaximum());
+                });
+                botOutputTime.start();
                 setState(JFrame.ICONIFIED);
             }
         }
@@ -436,6 +461,7 @@ public class MainWindow extends JFrame {
             botRunning = false;
             botThread.interrupt();
             upTime.stop();
+            botOutputTime.stop();
             setState(JFrame.NORMAL);
         }
     }
