@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="MainWindow">
-  <grid id="27dc6" binding="rootPanel" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="rootPanel" layout-manager="GridLayoutManager" row-count="3" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="951" height="480"/>
+      <xy x="20" y="20" width="1054" height="499"/>
     </constraints>
     <properties>
       <background color="-16709101"/>
@@ -35,61 +35,23 @@
       </grid>
       <vspacer id="90dd2">
         <constraints>
-          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
         </constraints>
       </vspacer>
-      <grid id="2273d" binding="leftBodyPanel" layout-manager="GridLayoutManager" row-count="4" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="2273d" binding="leftBodyPanel" layout-manager="GridLayoutManager" row-count="3" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
-          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <background color="-16709101"/>
         </properties>
         <border type="none"/>
         <children>
-          <grid id="73588" binding="selectChampionPanel" layout-manager="GridLayoutManager" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="16261" binding="activeRunningLabel" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="true" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                <preferred-size width="273" height="59"/>
-              </grid>
-            </constraints>
-            <properties>
-              <background color="-16709101"/>
-            </properties>
-            <border type="none"/>
-            <children>
-              <component id="bdca3" class="javax.swing.JLabel" binding="selectChampionLabel">
-                <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <foreground color="-8889816"/>
-                  <labelFor value="a6067"/>
-                  <text resource-bundle="gui_config" key="select.champion"/>
-                </properties>
-              </component>
-              <hspacer id="2439d">
-                <constraints>
-                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
-              </hspacer>
-              <component id="a6067" class="javax.swing.JComboBox" binding="selectChampionComboBox">
-                <constraints>
-                  <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <background color="-16709101"/>
-                  <foreground color="-8889816"/>
-                </properties>
-              </component>
-            </children>
-          </grid>
-          <grid id="16261" binding="activeRunningLabel" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-            <margin top="0" left="0" bottom="0" right="0"/>
-            <constraints>
-              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <background color="-16709101"/>
@@ -107,7 +69,7 @@
               </component>
               <component id="f03fc" class="javax.swing.JLabel" binding="timerLabel">
                 <constraints>
-                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <foreground color="-8889816"/>
@@ -120,7 +82,7 @@
           <grid id="debe7" binding="resolutionPanel" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
-              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <background color="-16709101"/>
@@ -150,34 +112,59 @@
               </component>
             </children>
           </grid>
-          <scrollpane id="bcc59" binding="botOutputScrollPanel">
+          <grid id="e129d" binding="botOutputPanel" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
-              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <background color="-16777216"/>
-              <foreground color="-16777216"/>
-              <horizontalScrollBarPolicy value="31"/>
-              <verticalScrollBarPolicy value="22"/>
+              <background color="-16709101"/>
             </properties>
             <border type="none"/>
             <children>
-              <component id="7a714" class="javax.swing.JLabel" binding="botOutputLabel">
-                <constraints/>
+              <scrollpane id="bcc59" binding="botOutputScrollPanel">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                </constraints>
                 <properties>
+                  <autoscrolls value="false"/>
                   <background color="-16777216"/>
-                  <foreground color="-16729344"/>
-                  <text value=""/>
+                  <foreground color="-16777216"/>
+                  <horizontalScrollBarPolicy value="31"/>
+                  <verticalScrollBarPolicy value="22"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="7a714" class="javax.swing.JLabel" binding="botOutputLabel">
+                    <constraints/>
+                    <properties>
+                      <autoscrolls value="false"/>
+                      <background color="-16777216"/>
+                      <foreground color="-16729344"/>
+                      <opaque value="true"/>
+                      <text value=""/>
+                    </properties>
+                  </component>
+                </children>
+              </scrollpane>
+              <component id="62215" class="javax.swing.JLabel" binding="botOutputLabelHeader">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <foreground color="-8889816"/>
+                  <labelFor value="bcc59"/>
+                  <text resource-bundle="gui_config" key="bot.output"/>
                 </properties>
               </component>
             </children>
-          </scrollpane>
+          </grid>
         </children>
       </grid>
       <grid id="d74e" binding="rightBodyPanel" layout-manager="GridLayoutManager" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
-          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
           <background color="-16709101"/>
@@ -340,6 +327,40 @@
           </component>
         </children>
       </grid>
+      <grid id="87f81" binding="selectChampionPanel" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-16709101"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="bdca3" class="javax.swing.JLabel" binding="selectChampionLabel">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <foreground color="-8889816"/>
+              <labelFor value="a6067"/>
+              <text resource-bundle="gui_config" key="select.champion"/>
+            </properties>
+          </component>
+          <component id="a6067" class="javax.swing.JComboBox" binding="selectChampionComboBox">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-16709101"/>
+              <foreground color="-8889816"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
     </children>
   </grid>
+  <inspectionSuppressions>
+    <suppress inspection="MissingMnemonic"/>
+  </inspectionSuppressions>
 </form>

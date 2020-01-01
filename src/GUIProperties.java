@@ -13,7 +13,7 @@ public class GUIProperties {
     static final String STATUS_LABEL_CHAMPION = "Status: Selection a champion to play %s.";
     static final String STATUS_LABEL_NOT_READY = "Status: Not ready to play yet, select a role and a champion.";
     static final String STATUS_LABEL_NOT_READY_CHAMPION = "Status: Not ready to play yet, select a champion.";
-    static final String STATUS_LABEL_READY = "Status: Ready to play %s %s. Press [Ctrl] + [R] to start.";
+    static final String STATUS_LABEL_READY = "Status: Ready to play %s %s. Press [Ctrl] + [V] to start.";
     static final String STATUS_LABEL_PLAYING = "Status: Playing %s %s. Press [Ctrl] + [C] to stop.";
     static final String STATUS_LABEL_BAD_RESOLUTION = "Status: Input resolution is incorrect. Please fix.";
     static final String TIME_LABEL_FORMAT = "Time: %s";

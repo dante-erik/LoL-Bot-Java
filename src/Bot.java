@@ -33,20 +33,14 @@ public class Bot
 		else if(role == LOLRole.ADC)
 		{
 			throw new UnsupportedOperationException();
-		}
-		else if(role == LOLRole.SUPPORT)
-		{
+		} else if (role == LOLRole.SUPPORT) {
 			throw new UnsupportedOperationException();
-		}
-		else
-		{
+		} else {
 			throw new UnsupportedOperationException();
 		}
 	}
-	
-	public void run() throws AWTException
-	{
-		while(running.get())
-			bot.tick();
+
+	public void run() {
+		while (running.get()) bot.tick();
 	}
 }

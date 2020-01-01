@@ -13,11 +13,11 @@ public class ClientBot
 	protected PixelGroup dailyPlay;
 	protected PixelGroup levelUp;
 	protected PixelGroup missions;
-	
-	public ClientBot() throws AWTException
-	{
+	private long a = 0;
+
+	public ClientBot() throws AWTException {
 		player = new ClientPlayer();
-		
+
 		startQueueButton = new PixelGroup(new Pixel(635, 585, 26, 55, 32));
 		acceptMatchButton = new PixelGroup(new Pixel(994, 361, 33, 77, 98));
 		championSelect = new PixelGroup(new Pixel(1148, 749, 3, 58, 70));
