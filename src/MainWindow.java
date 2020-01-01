@@ -39,7 +39,6 @@ public class MainWindow extends JFrame {
     private JLabel statusLabel;
     private JLabel selectChampionLabel;
     private JComboBox<String> selectChampionComboBox;
-    private JPanel selectChampionPanel;
     private JPanel leftBodyPanel;
     private JPanel rightBodyPanel;
     private JPanel threadButtonsPanel;
@@ -60,6 +59,9 @@ public class MainWindow extends JFrame {
     private JPanel activeRunningLabel;
     private JLabel botOutputLabel;
     private JScrollPane botOutputScrollPanel;
+    private JPanel botOutputPanel;
+    private JLabel botOutputLabelHeader;
+    private JPanel selectChampionPanel;
 
     public MainWindow() {
         super(GUIProperties.APPLICATION_NAME);
@@ -105,7 +107,7 @@ public class MainWindow extends JFrame {
             public void keyPressed(GlobalKeyEvent event) {
                 if (event.getVirtualKeyCode() == GlobalKeyEvent.VK_CONTROL) controlPressed = true;
                 else if (event.getVirtualKeyCode() == GlobalKeyEvent.VK_C && controlPressed) killBot();
-                else if (event.getVirtualKeyCode() == GlobalKeyEvent.VK_R && controlPressed && !botRunning) runBot();
+                else if (event.getVirtualKeyCode() == GlobalKeyEvent.VK_V && controlPressed && !botRunning) runBot();
             }
 
             @Override
@@ -131,6 +133,7 @@ public class MainWindow extends JFrame {
         resolutionComboBox.setFont(GUIProperties.STANDARD_FONT_LARGE);
         currentChampionLabel.setFont(GUIProperties.STANDARD_FONT_LARGE);
         timerLabel.setFont(GUIProperties.STANDARD_FONT_LARGE);
+        botOutputLabelHeader.setFont(GUIProperties.STANDARD_FONT_LARGE);
         botOutputLabel.setFont(GUIProperties.MONOSPACED);
     }
 
@@ -391,13 +394,7 @@ public class MainWindow extends JFrame {
                         @Override
                         public void run() {
                             super.run();
-                            try {
-                                bot.run();
-                            } catch (AWTException ignore) {
-                            }
-                            var sb = new StringBuilder();
-                            for (var i = 0L; i < 10000L; ++i) sb.append("Test\n");
-                            System.out.println(sb);
+                            bot.run();
                         }
 
                         @Override
@@ -413,7 +410,7 @@ public class MainWindow extends JFrame {
                 upTime = new Timer(1, e -> timerLabel.setText(String.format(GUIProperties.TIME_LABEL_FORMAT,
                         durationToString(Duration.between(startTime, Instant.now())))));
                 upTime.start();
-                botOutputTime = new Timer(1, e -> {
+                botOutputTime = new Timer(100, e -> {
                     botOutputLabel.setText("<html>" +
                             bos.toString(StandardCharsets.UTF_8).replaceAll("&", "&amp").replaceAll("<", "&lt;")
                                     .replaceAll(">", "&gt;").replaceAll("\"", "&quot").replaceAll("\n", "<br>")
