@@ -15,11 +15,15 @@ public class AsheMidPlayer extends Champion
 	
 	public void callRole()
 	{
+		rp.delay(1500);
 		super.callRole("mid");
 	}
 	
 	public void selectSummonerSpells()
 	{
+		//slow down
+		rp.setAutoDelay(100);
+		
 		//left summoner spell
 		rp.mouseMove(888, 842);
 		rp.mouseClick(1);
@@ -36,6 +40,9 @@ public class AsheMidPlayer extends Champion
 		//enemy summoner 4, arbitrary
 		rp.mouseMove(1369, 549);
 		rp.mouseClick(1);
+		
+		//speed up
+		rp.setAutoDelay(0);
 	}
 	
 	public void useSummonerSpells()
@@ -119,14 +126,14 @@ public class AsheMidPlayer extends Champion
 	
 	public void attack()
 	{
-		rp.mouseMove(1883, 840);
+		rp.mouseMove(1883, 844);
 		rp.keyClick("a");
 		rp.mouseClick(1);
 	}
 	
 	public void castSpells()
 	{
-		rp.mouseMove(1076, 213);
+		rp.mouseMove(1403, 211);
 		rp.keyClick("qwr");
 	}
 }

@@ -22,23 +22,27 @@ public class ClientPlayer
 	{
 		rp.mouseMove(1138, 521);
 		rp.mouseClick(1);
+		rp.mouseClick(1);
+		rp.mouseClick(1);
+		rp.mouseClick(1);
+		rp.mouseClick(1);
 	}
 	
 	public void dismissLevelUp()
 	{
-		rp.mouseMove(0,0);
+		rp.mouseMove(958, 839);
 		rp.mouseClick(1);
 	}
 	
-	public void dismissQuestComplete()
+	public void dismissMissions()
 	{
-		rp.mouseMove(0,0);
+		rp.mouseMove(961, 838);
 		rp.mouseClick(1);
 	}
 	
 	public void playAgain()
 	{
-		rp.mouseMove(0,0);
+		rp.mouseMove(855, 848);
 		rp.mouseClick(1);
 	}
 	

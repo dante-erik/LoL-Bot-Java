@@ -9,6 +9,7 @@ public class Champion
 	
 	public void selectChampion(String championName)
 	{
+		rp.setAutoDelay(75);
 		//text box for champ search
 		rp.mouseMove(1087, 264);
 		rp.mouseClick(1);

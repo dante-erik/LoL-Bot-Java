@@ -15,7 +15,7 @@ public class AsheMidBot extends ClientBot
 		super();
 		
 		ashe = new AsheMidPlayer();
-		isNewGame = true;
+		isNewGame = false;
 		
 		inGame = new PixelGroup(new Pixel(730, 1075, 26, 52, 53));
 		fullHp = new PixelGroup(new Pixel(1094, 1044, 8, 210, 0));

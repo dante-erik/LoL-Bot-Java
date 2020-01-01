@@ -10,6 +10,9 @@ public class ClientBot
 	protected PixelGroup loadScreen;
 	protected PixelGroup honorSelect;
 	protected PixelGroup playAgainButton;
+	protected PixelGroup dailyPlay;
+	protected PixelGroup levelUp;
+	protected PixelGroup missions;
 	
 	public ClientBot() throws AWTException
 	{
@@ -20,8 +23,10 @@ public class ClientBot
 		championSelect = new PixelGroup(new Pixel(1148, 749, 3, 58, 70));
 		loadScreen = new PixelGroup(new Pixel(955, 578, 57, 53, 50));
 		honorSelect = new PixelGroup(new Pixel(882, 216, 225, 230, 210));
-		playAgainButton = new PixelGroup(new Pixel(0,0,0,0,0));
+		playAgainButton = new PixelGroup(new Pixel(1128, 731, 9, 32, 40));
 		dailyPlay = new PixelGroup(new Pixel(323, 296, 50, 40, 30));
+		levelUp = new PixelGroup(new Pixel(1017, 314, 238, 228, 208));
+		missions = new PixelGroup(new Pixel(1263, 353, 86, 66, 35));
 	}
 	
 	public void tick()
@@ -42,9 +47,17 @@ public class ClientBot
 		{
 			player.honorTeammate();
 		}
+		else if(levelUp.isVisible())
+		{
+			player.dismissLevelUp();
+		}
 		else if(dailyPlay.isVisible())
 		{
 			player.acceptDailyPlay();
+		}
+		else if(missions.isVisible())
+		{
+			player.dismissMissions();
 		}
 		else
 		{

@@ -198,9 +198,9 @@ public class RobotPlus extends Robot {
 			//right click
 			if (button == 2)
 			{
-				mousePress(InputEvent.BUTTON2_DOWN_MASK);
+				mousePress(InputEvent.BUTTON3_DOWN_MASK);
 				delay(milliseconds);
-				mouseRelease(InputEvent.BUTTON2_DOWN_MASK);
+				mouseRelease(InputEvent.BUTTON3_DOWN_MASK);
 			}
 
 			if (autoDelay > 0)
