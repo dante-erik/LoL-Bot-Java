@@ -25,7 +25,7 @@ public class DisplayPixel
 			x = (int)Math.round(p.getX());
 			y = (int)Math.round(p.getY());
 			c = r.getPixelColor(x, y);
-			System.out.println("("+x+", "+y+") ("+c.getRed()+", "+c.getGreen()+", "+c.getBlue()+")");
+			System.out.println(x+", "+y+", "+c.getRed()+", "+c.getGreen()+", "+c.getBlue());
 			r.delay(milliseconds);
 		}
 	}

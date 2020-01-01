@@ -1,0 +1,7 @@
+Hit [Esc] to open the settings while in game
+
+Reset all in game settings to default (there's a button for it on each tab)
+
+Click on the "Game Settings" tab
+
+Turn off "Attack Move", the box should become dark

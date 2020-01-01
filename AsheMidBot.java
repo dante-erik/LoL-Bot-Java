@@ -17,10 +17,9 @@ public class AsheMidBot extends ClientBot
 		ashe = new AsheMidPlayer();
 		isNewGame = true;
 		
-		inGame = new Pixel(0,0,0,0,0);
-		fullHp = new Pixel(0,0,0,0,0);
-		highHp = new Pixel(0,0,0,0,0);
-		lowHp = new Pixel(0,0,0,0,0);
+		inGame = new PixelGroup(new Pixel(730, 1075, 26, 52, 53));
+		fullHp = new PixelGroup(new Pixel(1094, 1044, 8, 210, 0));
+		lowHp = new PixelGroup(new Pixel(895, 1045, 11, 97, 17));
 	}
 	
 	public void tick()
@@ -30,27 +29,37 @@ public class AsheMidBot extends ClientBot
 		{
 			if(isNewGame)
 			{
+				ashe.rp.delay(4000);
 				ashe.buyStartingItems();
-				ashe.delay(60000);
+				ashe.upgradeAbilities();
+				ashe.lockCamera();
+				System.out.println("Waiting for minions to spawn");
+				ashe.rp.delay(60000);
 				isNewGame = false;
 			}
 			//stay in inGame cycle and avoid re-evaluating if(startingNewGame)
 			else while(inGame.isVisible())
 			{
-				if(lowHp.isVisible())
+				//if lowHp is not visible, go back to base and buy items
+				if(!lowHp.isVisible())
 				{
 					ashe.useSummonerSpells();
 					ashe.retreat();
 					ashe.buyItems();
+					ashe.upgradeAbilities();
 				}
-				else if(highHp.isVisible())
+				//if not fullHp, but above lowHp, must be in lane taking some kind of damage, so cast abilities will hit enemy
+				else if(!fullHp.isVisible())
 				{
 					ashe.castSpells();
 					ashe.attack();
+					ashe.upgradeAbilities();
 				}
-				else if(fullHp.isVisible())
+				//if fullHp is visible, this will be reached, no point in re-evaluating
+				else
 				{
 					ashe.attack();
+					ashe.upgradeAbilities();
 				}
 			}
 		}
@@ -59,9 +68,10 @@ public class AsheMidBot extends ClientBot
 		//championSelect and loadScreen are in ClientBot because they are not champion specific
 		else if(championSelect.isVisible())
 		{
-			ashe.pickChampion();
+			ashe.selectChampion();
 			ashe.callRole();
 			ashe.selectSummonerSpells();
+			ashe.lockIn();
 			//if championSelect is reached, the bot has finished its previous game
 			isNewGame = true;
 			

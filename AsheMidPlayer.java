@@ -1,77 +1,132 @@
 import java.awt.AWTException;
+import java.awt.event.KeyEvent;
 
-public class AsheMidPlayer
+public class AsheMidPlayer extends Champion
 {
-	private RobotPlus rp = new RobotPlus();
-	
-	public AsheMidPlayer() throws AWTException {}
-	
-	public void pickChampion()
+	public AsheMidPlayer() throws AWTException
 	{
-		rp.mouseMove(textbox, textbox);
-		rp.mouseClick(1);
-		rp.keyClick("ashe");
-		rp.mouseMove(asheicon, asheicon);
-		rp.mouseClick(1);
-		rp.mouseMove(lockin, lockin);
-		rp.mouseClick(1);
+		super();
+	}
+	
+	public void selectChampion()
+	{
+		super.selectChampion("ashe");
 	}
 	
 	public void callRole()
 	{
-		rp.mouseMove(chatbox, chatbox);
-		rp.mouseClick(1);
-		rp.keyClick("mid");
+		super.callRole("mid");
 	}
 	
 	public void selectSummonerSpells()
 	{
-		rp.mouseMove(leftsummonerspell, leftsummonerspell);
+		//left summoner spell
+		rp.mouseMove(888, 842);
 		rp.mouseClick(1);
-		rp.mouseMove(flash, flash);
-		rp.mouseMove(rightsummonerspell, rightsummonerspell);
+		//flash icon
+		rp.mouseMove(943, 636);
 		rp.mouseClick(1);
-		rp.mouseMove(heal, heal);
+		//right summoner spell
+		rp.mouseMove(935, 841);
+		rp.mouseClick(1);
+		//heal icon
+		rp.mouseMove(823, 699);
+		rp.mouseClick(1);
+		//if the second summoner spell couldnt be selected, this closes the selection screen
+		//enemy summoner 4, arbitrary
+		rp.mouseMove(1369, 549);
+		rp.mouseClick(1);
 	}
 	
 	public void useSummonerSpells()
 	{
-		rp.mouseMove(safespot, safespot);
+		rp.mouseMove(321, 888);
 		rp.keyClick("df");
 	}
 	
 	public void retreat()
 	{
-		rp.mouseMove(baseonminimap, baseonminimap);
+		rp.mouseMove(1658, 1065);
 		rp.mouseClick(2);
+	}
+	
+	public void buyStartingItems()
+	{
+		rp.setAutoDelay(100);
+		
+		//open shop
+		rp.keyClick("p");
+		
+		//dorans blade
+		buy("bla");
+		
+		//warding totem
+		buy("w");
+		
+		//close shop with escape, because if an item couldnt be bought, [p] will not close the shop
+		//escape is the safest way to close the shop
+		rp.keyClick(KeyEvent.VK_ESCAPE);
+		
+		rp.setAutoDelay(0);
 	}
 	
 	public void buyItems()
 	{
+		//slows bot down to buy items
+		rp.setAutoDelay(100);
+		
+		//open shop
 		rp.keyClick("p");
-		rp.mouseMove(bers, bers);
-		rp.mouseClick(2);
-		rp.mouseMove(boots, boots);
-		rp.mouseClick(2);
-		rp.mouseMove(bork, bork);
-		rp.mouseClick(2);
-		rp.mouseMove(cutlass, cutlass);
-		rp.mouseClick(2);
-		rp.mouseMove(rec, rec);
-		rp.mouseClick(2);
-		rp.keyClick("p");
+		
+		//berserkers greaves
+		buy("ber");
+		
+		//boots of speed
+		buy("bo");
+		
+		//blade of ruined king
+		buy("rui");
+		
+		//cutlass
+		buy("lg");
+		
+		//recurve bow
+		buy("rv");
+		
+		//vampiric scepter
+		buy("sc");
+		
+		//long sword
+		buy("sw");
+		
+		//dagger
+		buy("gg");
+
+		//close shop with escape, because if an item couldnt be bought, [p] will not close the shop
+		//escape is the safest way to close the shop
+		rp.keyClick(KeyEvent.VK_ESCAPE);
+		
+		//speeds bot back up
+		rp.setAutoDelay(0);
+	}
+	
+	public void upgradeAbilities()
+	{
+		rp.keyPress(KeyEvent.VK_CONTROL);
+		rp.keyClick("rqwe");
+		rp.keyRelease(KeyEvent.VK_CONTROL);
 	}
 	
 	public void attack()
 	{
-		rp.mouseMove(enemybase, enemybase);
+		rp.mouseMove(1883, 840);
 		rp.keyClick("a");
 		rp.mouseClick(1);
 	}
 	
 	public void castSpells()
 	{
-		rp.mouseMove(attackspot, attackspot);
+		rp.mouseMove(1076, 213);
 		rp.keyClick("qwr");
 	}
 }

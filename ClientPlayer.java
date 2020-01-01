@@ -8,37 +8,45 @@ public class ClientPlayer
 	
 	public void startQueue()
 	{
-		rp.mouseMove(startqueuebutton, startqueuebutton);
+		rp.mouseMove(858, 846);
 		rp.mouseClick(1);
 	}
 	
 	public void acceptMatch()
 	{
-		rp.mouseMove(acceptmatchbutton, acceptmatchbutton);
+		rp.mouseMove(957, 717);
 		rp.mouseClick(1);
 	}
 	
 	public void honorTeammate()
 	{
-		rp.mouseMove(honorportrait, honorportrait);
+		rp.mouseMove(1138, 521);
 		rp.mouseClick(1);
 	}
 	
 	public void dismissLevelUp()
 	{
-		rp.mouseMove(okbutton, okbutton);
+		rp.mouseMove(0,0);
 		rp.mouseClick(1);
 	}
 	
 	public void dismissQuestComplete()
 	{
-		rp.mouseMove(okbutton2, okbutton2);
+		rp.mouseMove(0,0);
 		rp.mouseClick(1);
 	}
 	
 	public void playAgain()
 	{
-		rp.mouseMove(playagainbutton, playagainbutton);
+		rp.mouseMove(0,0);
+		rp.mouseClick(1);
+	}
+	
+	public void acceptDailyPlay()
+	{
+		rp.mouseMove(955, 548);
+		rp.mouseClick(1);
+		rp.mouseMove(960, 837);
 		rp.mouseClick(1);
 	}
 }

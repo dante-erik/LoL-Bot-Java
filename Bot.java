@@ -1,6 +1,7 @@
 import java.awt.AWTException;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.awt.Dimension;
+import java.lang.UnsupportedOperationException;
 
 public class Bot
 {
@@ -16,40 +17,32 @@ public class Bot
 	
 	public void setupBot(LOLRole role, String championName, Dimension clientRes) throws AWTException
 	{
-		switch(role)
+		if(role == LOLRole.TOP)
 		{
-			case TOP:
-				throw UnsupportedOperationException;
-				break;
-				
-			case JUNGLE:
-				if(championName.equals("Warwick"))
-					bot = new WarwickJungleBot();
-				else
-					throw UnsupportedOperationException
-				break;
-				
-			case MID:
-				if(championName.equals("Ashe"))
-					bot = new AsheMidBot();
-				else
-					throw UnsupportedOperationException
-				break;
-			
-			case ADC:
-				throw UnsupportedOperationException;
-				break;
-				
-			case SUPPORT:
-				if(championName.equals("Yuumi"))
-					bot = new YuumiSupportBot();
-				else
-					throw UnsupportedOperationException
-				break;
-				
-			default:
-				throw UnsupportedOperationException;
-				break;
+			throw new UnsupportedOperationException();
+		}
+		else if(role == LOLRole.JUNGLE)
+		{
+			throw new UnsupportedOperationException();
+		}
+		else if(role == LOLRole.MID)
+		{
+			if(championName.equals("Ashe"))
+				bot = new AsheMidBot();
+			else
+				throw new UnsupportedOperationException();
+		}
+		else if(role == LOLRole.ADC)
+		{
+			throw new UnsupportedOperationException();
+		}
+		else if(role == LOLRole.SUPPORT)
+		{
+			throw new UnsupportedOperationException();
+		}
+		else
+		{
+			throw new UnsupportedOperationException();
 		}
 	}
 	

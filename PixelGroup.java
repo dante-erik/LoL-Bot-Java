@@ -11,6 +11,11 @@ public class PixelGroup
 		visible = false;
 	}
 	
+	public PixelGroup(Pixel p)
+	{
+		pixels.add(p);
+	}
+	
 	//PixelGroups given an ArrayList<Pixel> to add to ArrayList<Pixel> pixel
 	public PixelGroup(ArrayList<Pixel> p)
 	{

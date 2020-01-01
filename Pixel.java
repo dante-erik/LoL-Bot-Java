@@ -6,14 +6,18 @@ public class Pixel
 {
 	private int x;
 	private int y;
-	private Color color;
+	private int r;
+	private int g;
+	private int b;
 	
 	//create Pixel with (x,y) and (r,g,b)
 	public Pixel(int x, int y, int r, int g, int b)
 	{
 		this.x = x;
 		this.y = y;
-		color = new Color(r,g,b);
+		this.r = r;
+		this.g = g;
+		this.b = b;
 	}
 	
 	//create Pixel with (x,y) and Color
@@ -21,8 +25,9 @@ public class Pixel
 	{
 		this.x = x;
 		this.y = y;
-		//avoids Color list error, Color has many constructors, bug fix
-		color = new Color(c.getRed(), c.getGreen(), c.getBlue());
+		r = c.getRed();
+		g = c.getGreen();
+		b = c.getBlue();
 	}
 	
 	//compare Pixel color to Color of Pixel on the screen at same x,y
@@ -31,19 +36,19 @@ public class Pixel
 	{
 		try
 		{
-			Robot r = new Robot();
-			Color c = r.getPixelColor(x,y);
+			RobotPlus rp = new RobotPlus();
+			Color c = rp.getPixelColor(x,y);
 		
 			//if color.getRed() is outside of the range of c.getRed() +- tolerance, return false
-			if(!(color.getRed() <= c.getRed() + tolerance && color.getRed() >= c.getRed() - tolerance))
+			if(!(r <= c.getRed() + tolerance && r >= c.getRed() - tolerance))
 				return false;
 		
 			//if color.getGreen() is outside of the range of c.getGreen() +- tolerance, return false
-			if(!(color.getGreen() <= c.getGreen() + tolerance && color.getGreen() >= c.getGreen() - tolerance))
+			if(!(g <= c.getGreen() + tolerance && g >= c.getGreen() - tolerance))
 				return false;
 		
 			//if color.getBlue() is outside of the range of c.getBlue() +- tolerance, return false
-			if(!(color.getBlue() <= c.getBlue() + tolerance && color.getBlue() >= c.getBlue() - tolerance))
+			if(!(b <= c.getBlue() + tolerance && b >= c.getBlue() - tolerance))
 				return false;
 		
 			return true;
@@ -59,6 +64,6 @@ public class Pixel
 	
 	public String toString()
 	{
-		return "("+x+", "+y+", "+color.getRed()+", "+color.getGreen()+", "+color.getBlue()+")";
+		return "("+x+", "+y+") ("+r+", "+g+", "+b+")";
 	}
 }
