@@ -1,7 +1,5 @@
-import java.awt.AWTException;
+import java.awt.*;
 import java.util.concurrent.atomic.AtomicBoolean;
-import java.awt.Dimension;
-import java.lang.UnsupportedOperationException;
 
 public class Bot
 {

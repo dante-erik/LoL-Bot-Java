@@ -1,6 +1,4 @@
-import java.awt.AWTException;
-import java.awt.Robot;
-import java.awt.Color;
+import java.awt.*;
 
 public class Pixel
 {
@@ -38,21 +36,16 @@ public class Pixel
 		{
 			RobotPlus rp = new RobotPlus();
 			Color c = rp.getPixelColor(x,y);
-		
-			//if color.getRed() is outside of the range of c.getRed() +- tolerance, return false
-			if(!(r <= c.getRed() + tolerance && r >= c.getRed() - tolerance))
-				return false;
-		
-			//if color.getGreen() is outside of the range of c.getGreen() +- tolerance, return false
-			if(!(g <= c.getGreen() + tolerance && g >= c.getGreen() - tolerance))
-				return false;
-		
-			//if color.getBlue() is outside of the range of c.getBlue() +- tolerance, return false
-			if(!(b <= c.getBlue() + tolerance && b >= c.getBlue() - tolerance))
-				return false;
-		
-			return true;
-		}
+
+            //if color.getRed() is outside of the range of c.getRed() +- tolerance, return false
+            if (!(r <= c.getRed() + tolerance && r >= c.getRed() - tolerance)) return false;
+
+            //if color.getGreen() is outside of the range of c.getGreen() +- tolerance, return false
+            if (!(g <= c.getGreen() + tolerance && g >= c.getGreen() - tolerance)) return false;
+
+            //if color.getBlue() is outside of the range of c.getBlue() +- tolerance, return false
+            return b <= c.getBlue() + tolerance && b >= c.getBlue() - tolerance;
+        }
 		catch(AWTException ex)
 		{
 			System.out.println("AWTException error in Pixel.java");

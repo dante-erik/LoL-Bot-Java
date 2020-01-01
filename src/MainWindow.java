@@ -81,7 +81,7 @@ public class MainWindow extends JFrame {
         } catch (IllegalAccessException | InstantiationException | UnsupportedLookAndFeelException | ClassNotFoundException e) {
             try {
                 UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
-            } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ignored) {
+            } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ignore) {
             }
         }
         var window = new MainWindow();
@@ -377,31 +377,37 @@ public class MainWindow extends JFrame {
                 threadButtonsPanel.setBackground(Color.GREEN);
                 toggleSetupBotComponents();
                 botRunning = true;
-                botThread = new Thread() {
-                    //                    private Bot bot = new Bot(selectedRole, selectedChampion, selectedDimension);
+                try {
+                    botThread = new Thread() {
+                        private Bot bot = new Bot(selectedRole, selectedChampion, selectedDimension);
 
-                    @Override
-                    public synchronized void start() {
-                        super.start();
-                        bos = new ByteArrayOutputStream();
-                        System.setOut(new PrintStream(bos));
-                    }
+                        @Override
+                        public synchronized void start() {
+                            super.start();
+                            bos = new ByteArrayOutputStream();
+                            System.setOut(new PrintStream(bos));
+                        }
 
-                    @Override
-                    public void run() {
-                        super.run();
-                        //                        bot.run();
-                        var sb = new StringBuilder();
-                        for (var i = 0L; i < 10000L; ++i) sb.append("Test\n");
-                        System.out.println(sb);
-                    }
+                        @Override
+                        public void run() {
+                            super.run();
+                            try {
+                                bot.run();
+                            } catch (AWTException ignore) {
+                            }
+                            var sb = new StringBuilder();
+                            for (var i = 0L; i < 10000L; ++i) sb.append("Test\n");
+                            System.out.println(sb);
+                        }
 
-                    @Override
-                    public void interrupt() {
-                        super.interrupt();
-                        //                        bot.running.compareAndSet(true, false);
-                    }
-                };
+                        @Override
+                        public void interrupt() {
+                            super.interrupt();
+                            bot.running.compareAndSet(true, false);
+                        }
+                    };
+                } catch (Exception ignore) {
+                }
                 botThread.start();
                 startTime = Instant.now();
                 upTime = new Timer(1, e -> timerLabel.setText(String.format(GUIProperties.TIME_LABEL_FORMAT,

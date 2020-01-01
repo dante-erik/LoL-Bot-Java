@@ -1,4 +1,4 @@
-import java.awt.AWTException;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 
 public class Champion
