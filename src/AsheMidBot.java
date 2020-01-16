@@ -71,7 +71,10 @@ public class AsheMidBot extends ClientBot
 			player.selectAshe();
 			player.delay(1500);
 			player.callMid();
-			player.selectFlashHeal();
+			if(runesTab.isVisible())
+				player.selectRunesFlashHeal();
+			else
+				player.selectFlashHeal();
 			player.lockIn();
 			//if championSelect is reached, the bot has finished its previous game
 			isNewGame = true;

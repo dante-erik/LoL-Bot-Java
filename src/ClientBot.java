@@ -8,6 +8,7 @@ public class ClientBot
 	protected PixelGroup championSelect;
 	protected PixelGroup loadScreen;
 	protected PixelGroup acceptMatchButton;
+	protected PixelGroup runesTab;
 	private PixelGroup startQueueButton;
 	private PixelGroup honorSelect;
 	private PixelGroup playAgainButton;
@@ -18,10 +19,11 @@ public class ClientBot
 	public ClientBot() throws AWTException {
 		player = new ClientPlayer();
 
-		startQueueButton = new PixelGroup(new Pixel(635, 585, 26, 55, 32));
-		acceptMatchButton = new PixelGroup(new Pixel(994, 361, 33, 77, 98));
 		championSelect = new PixelGroup(new Pixel(1148, 749, 3, 58, 70));
 		loadScreen = new PixelGroup(new Pixel(955, 578, 57, 53, 50));
+		acceptMatchButton = new PixelGroup(new Pixel(994, 361, 33, 77, 98));
+		runesTab = new PixelGroup(new Pixel(977, 830, 16, 22, 26));
+		startQueueButton = new PixelGroup(new Pixel(635, 585, 26, 55, 32));
 		honorSelect = new PixelGroup(new Pixel(882, 216, 225, 230, 210));
 		playAgainButton = new PixelGroup(new Pixel(1128, 731, 9, 32, 40));
 		dailyReward = new PixelGroup(new Pixel(323, 296, 50, 40, 30));
