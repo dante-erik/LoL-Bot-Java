@@ -3,13 +3,9 @@ import java.util.ArrayList;
 public class PixelGroup
 {
 	private ArrayList<Pixel> pixels = new ArrayList<Pixel>();
-	private boolean visible;
 	
 	//default constructor has no Pixels
-	public PixelGroup()
-	{
-		visible = false;
-	}
+	public PixelGroup() {}
 	
 	public PixelGroup(Pixel p)
 	{
@@ -20,7 +16,6 @@ public class PixelGroup
 	public PixelGroup(ArrayList<Pixel> p)
 	{
 		pixels.addAll(p);
-		visible = false;
 	}
 	
 	//add a Pixel to the ArrayList<Pixel> pixels
@@ -29,41 +24,27 @@ public class PixelGroup
 		pixels.add(p);
 	}
 	
-	//updates the boolean visible of the PixelGroup
-	//visible becomes true if ALL Pixels in the PixelGroup are visible with a tolerance for N difference in RGB values
-	public void updateBoolean(int tolerance)
-	{
-		//true until proven false
-		visible = true;
-		
-		//check if each Pixel is visible on the screen
-		for(int i = 0; i < pixels.size(); i++)
-		{
-			//if the pixel being scanned is not visible, visible is false
-			if(!pixels.get(i).equalToScreen(tolerance))
-			{
-				visible = false;
-				//loop is ended so the remaining pixels are not scanned, efficient
-				i = pixels.size();
-			}
-		}
-	}
-	
 	//return boolean isVisible after updating boolean with 0 tolerance
-	public boolean isVisible()
+	public void isVisible()
 	{
-		updateBoolean(0);
-		
-		return visible;
+		isVisible(0);
 	}
-	
 	
 	//return boolean isVisible after updating boolean with N tolerance
 	public boolean isVisible(int tolerance)
 	{
-		updateBoolean(tolerance);
+		//check if each Pixel is visible on the screen
+		for(int i = 0; i < pixels.size(); i++)
+		{
+			//if the pixel being scanned is not visible, visible is false
+			if(!pixels.get(i).isVisible(tolerance))
+			{
+				return false;
+			}
+		}
 		
-		return visible;
+		//all pixels were visible, return true
+		return true;
 	}
 	
 	public String toString()

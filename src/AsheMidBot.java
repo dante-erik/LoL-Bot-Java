@@ -2,19 +2,18 @@ import java.awt.AWTException;
 
 public class AsheMidBot extends ClientBot
 {
-	AsheMidPlayer ashe;
+	AsheMidPlayer player;
 	private boolean isNewGame;
 	//all of these PixelGroups can change based on champion
 	private PixelGroup inGame;
 	private PixelGroup fullHp;
-	private PixelGroup highHp;
 	private PixelGroup lowHp;
 	
 	public AsheMidBot() throws AWTException
 	{
 		super();
 		
-		ashe = new AsheMidPlayer();
+		player = new AsheMidPlayer();
 		isNewGame = false;
 		
 		inGame = new PixelGroup(new Pixel(730, 1075, 26, 52, 53));
@@ -29,12 +28,12 @@ public class AsheMidBot extends ClientBot
 		{
 			if(isNewGame)
 			{
-				ashe.rp.delay(4000);
-				ashe.buyStartingItems();
-				ashe.upgradeAbilities();
-				ashe.lockCamera();
+				player.rp.delay(4000);
+				player.buyStartingItems();
+				player.upgradeAbilities();
+				player.lockCamera();
 				System.out.println("Waiting for minions to spawn");
-				ashe.rp.delay(60000);
+				player.rp.delay(60000);
 				isNewGame = false;
 			}
 			//stay in inGame cycle and avoid re-evaluating if(startingNewGame)
@@ -43,23 +42,23 @@ public class AsheMidBot extends ClientBot
 				//if lowHp is not visible, go back to base and buy items
 				if(!lowHp.isVisible())
 				{
-					ashe.useSummonerSpells();
-					ashe.retreat();
-					ashe.buyItems();
-					ashe.upgradeAbilities();
+					player.useSummonerSpells();
+					player.retreat();
+					player.buyItems();
+					player.upgradeAbilities();
 				}
 				//if not fullHp, but above lowHp, must be in lane taking some kind of damage, so cast abilities will hit enemy
 				else if(!fullHp.isVisible())
 				{
-					ashe.castSpells();
-					ashe.attack();
-					ashe.upgradeAbilities();
+					player.castSpells();
+					player.attack();
+					player.upgradeAbilities();
 				}
 				//if fullHp is visible, this will be reached, no point in re-evaluating
 				else
 				{
-					ashe.attack();
-					ashe.upgradeAbilities();
+					player.attack();
+					player.upgradeAbilities();
 				}
 			}
 		}
@@ -68,10 +67,10 @@ public class AsheMidBot extends ClientBot
 		//championSelect and loadScreen are in ClientBot because they are not champion specific
 		else if(championSelect.isVisible())
 		{
-			ashe.selectChampion();
-			ashe.callRole();
-			ashe.selectSummonerSpells();
-			ashe.lockIn();
+			player.selectChampion();
+			player.callRole();
+			player.selectSummonerSpells();
+			player.lockIn();
 			//if championSelect is reached, the bot has finished its previous game
 			isNewGame = true;
 			
