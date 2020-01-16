@@ -14,7 +14,6 @@ public class ClientBot
 	private PixelGroup dailyReward;
 	private PixelGroup levelUp;
 	private PixelGroup missions;
-	private long a = 0;
 
 	public ClientBot() throws AWTException {
 		player = new ClientPlayer();

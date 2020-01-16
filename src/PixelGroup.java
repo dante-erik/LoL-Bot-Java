@@ -4,12 +4,13 @@ public class PixelGroup
 {
 	private ArrayList<Pixel> pixels = new ArrayList<Pixel>();
 	
+	//PixelGroup given a Pixel to add to ArrayList<Pixel> pixels
 	public PixelGroup(Pixel p)
 	{
 		pixels.add(p);
 	}
 	
-	//PixelGroups given an ArrayList<Pixel> to add to ArrayList<Pixel> pixel
+	//PixelGroups given an ArrayList<Pixel> to add to ArrayList<Pixel> pixels
 	public PixelGroup(ArrayList<Pixel> p)
 	{
 		pixels.addAll(p);

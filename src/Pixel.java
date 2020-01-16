@@ -38,12 +38,14 @@ public class Pixel
 			Color c = r.getPixelColor(x,y);
 
             //if color.getRed() is outside of the range of c.getRed() +- tolerance, return false
-            if (!(red <= c.getRed() + tolerance && red >= c.getRed() - tolerance)) return false;
+            if (!(red <= c.getRed() + tolerance && red >= c.getRed() - tolerance))
+				return false;
 
             //if color.getGreen() is outside of the range of c.getGreen() +- tolerance, return false
-            if (!(green <= c.getGreen() + tolerance && green >= c.getGreen() - tolerance)) return false;
+            if (!(green <= c.getGreen() + tolerance && green >= c.getGreen() - tolerance))
+				return false;
 
-			//return if all passed, or failed
+			//return if all passed, or if blue test failed
             return blue <= c.getBlue() + tolerance && blue >= c.getBlue() - tolerance;
         }
 		catch(AWTException ex)
