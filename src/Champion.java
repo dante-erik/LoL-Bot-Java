@@ -54,7 +54,7 @@ public class Champion
 		rp.keyClick(KeyEvent.VK_ENTER);
 	}
 	
-	public void buy(String item)
+	public void buyItem(String item)
 	{
 		shopSearchHotkey();
 		rp.keyClick(item);

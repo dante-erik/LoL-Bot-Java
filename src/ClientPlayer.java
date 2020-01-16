@@ -46,7 +46,7 @@ public class ClientPlayer
 		rp.mouseClick(1);
 	}
 	
-	public void acceptDailyPlay()
+	public void acceptDailyReward()
 	{
 		rp.mouseMove(955, 548);
 		rp.mouseClick(1);

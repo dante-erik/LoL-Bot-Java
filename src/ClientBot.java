@@ -4,15 +4,16 @@ public class ClientBot
 {
 	ClientPlayer player;
 	//all of these PixelGroups do not change based on champion
-	protected PixelGroup startQueueButton;
-	protected PixelGroup acceptMatchButton;
+	//these 2 are protected because they are used in ChampionRoleBot files
 	protected PixelGroup championSelect;
 	protected PixelGroup loadScreen;
-	protected PixelGroup honorSelect;
-	protected PixelGroup playAgainButton;
-	protected PixelGroup dailyPlay;
-	protected PixelGroup levelUp;
-	protected PixelGroup missions;
+	private PixelGroup startQueueButton;
+	private PixelGroup acceptMatchButton;
+	private PixelGroup honorSelect;
+	private PixelGroup playAgainButton;
+	private PixelGroup dailyReward;
+	private PixelGroup levelUp;
+	private PixelGroup missions;
 	private long a = 0;
 
 	public ClientBot() throws AWTException {
@@ -24,7 +25,7 @@ public class ClientBot
 		loadScreen = new PixelGroup(new Pixel(955, 578, 57, 53, 50));
 		honorSelect = new PixelGroup(new Pixel(882, 216, 225, 230, 210));
 		playAgainButton = new PixelGroup(new Pixel(1128, 731, 9, 32, 40));
-		dailyPlay = new PixelGroup(new Pixel(323, 296, 50, 40, 30));
+		dailyReward = new PixelGroup(new Pixel(323, 296, 50, 40, 30));
 		levelUp = new PixelGroup(new Pixel(1017, 314, 238, 228, 208));
 		missions = new PixelGroup(new Pixel(1263, 353, 86, 66, 35));
 	}
@@ -51,9 +52,9 @@ public class ClientBot
 		{
 			player.dismissLevelUp();
 		}
-		else if(dailyPlay.isVisible())
+		else if(dailyReward.isVisible())
 		{
-			player.acceptDailyPlay();
+			player.acceptDailyReward();
 		}
 		else if(missions.isVisible())
 		{

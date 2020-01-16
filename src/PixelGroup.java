@@ -4,9 +4,6 @@ public class PixelGroup
 {
 	private ArrayList<Pixel> pixels = new ArrayList<Pixel>();
 	
-	//default constructor has no Pixels
-	public PixelGroup() {}
-	
 	public PixelGroup(Pixel p)
 	{
 		pixels.add(p);

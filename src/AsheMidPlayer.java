@@ -8,18 +8,17 @@ public class AsheMidPlayer extends Champion
 		super();
 	}
 	
-	public void selectChampion()
+	public void selectAshe()
 	{
 		super.selectChampion("ashe");
 	}
 	
-	public void callRole()
+	public void callMid()
 	{
-		rp.delay(1500);
 		super.callRole("mid");
 	}
 	
-	public void selectSummonerSpells()
+	public void selectFlashHeal()
 	{
 		//slow down
 		rp.setAutoDelay(100);
@@ -45,7 +44,7 @@ public class AsheMidPlayer extends Champion
 		rp.setAutoDelay(0);
 	}
 	
-	public void useSummonerSpells()
+	public void useFlashHeal()
 	{
 		rp.mouseMove(321, 888);
 		rp.keyClick("df");
@@ -65,10 +64,10 @@ public class AsheMidPlayer extends Champion
 		rp.keyClick("p");
 		
 		//dorans blade
-		buy("bla");
+		buyItem("bla");
 		
 		//warding totem
-		buy("w");
+		buyItem("w");
 		
 		//close shop with escape, because if an item couldnt be bought, [p] will not close the shop
 		//escape is the safest way to close the shop
@@ -86,28 +85,28 @@ public class AsheMidPlayer extends Champion
 		rp.keyClick("p");
 		
 		//berserkers greaves
-		buy("ber");
+		buyItem("ber");
 		
 		//boots of speed
-		buy("bo");
+		buyItem("bo");
 		
 		//blade of ruined king
-		buy("rui");
+		buyItem("rui");
 		
 		//cutlass
-		buy("lg");
+		buyItem("lg");
 		
 		//recurve bow
-		buy("rv");
+		buyItem("rv");
 		
 		//vampiric scepter
-		buy("sc");
+		buyItem("sc");
 		
 		//long sword
-		buy("sw");
+		buyItem("sw");
 		
 		//dagger
-		buy("gg");
+		buyItem("gg");
 
 		//close shop with escape, because if an item couldnt be bought, [p] will not close the shop
 		//escape is the safest way to close the shop
@@ -117,7 +116,7 @@ public class AsheMidPlayer extends Champion
 		rp.setAutoDelay(0);
 	}
 	
-	public void upgradeAbilities()
+	public void upgradeRQWE()
 	{
 		rp.keyPress(KeyEvent.VK_CONTROL);
 		rp.keyClick("rqwe");
@@ -131,7 +130,7 @@ public class AsheMidPlayer extends Champion
 		rp.mouseClick(1);
 	}
 	
-	public void castSpells()
+	public void castAbilities()
 	{
 		rp.mouseMove(1403, 211);
 		rp.keyClick("qwr");
