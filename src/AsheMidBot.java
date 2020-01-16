@@ -28,11 +28,12 @@ public class AsheMidBot extends ClientBot
 		{
 			if(isNewGame)
 			{
+				System.out.println("waiting 4 sec before buying items");
 				player.rp.delay(4000);
 				player.buyStartingItems();
 				player.upgradeRQWE();
 				player.lockCamera();
-				System.out.println("Waiting for minions to spawn");
+				System.out.println("waiting 1 minute for minions to spawn");
 				player.rp.delay(60000);
 				isNewGame = false;
 			}
@@ -77,17 +78,19 @@ public class AsheMidBot extends ClientBot
 			
 			//halts the program until championSelect is finished
 			//avoids repeating callRole()
-			while(!loadScreen.isVisible())
-				System.out.println("Waiting to finish champion select");
+			// && !acceptMatchButton.isVisible() allows the program to stop waiting
+			// if another player dodges and the bot "accept match" button pop up
+			while(!loadScreen.isVisible() && !acceptMatchButton.isVisible())
+				System.out.println("waiting for champion select to end");
 			
-			System.out.println("Finished champion select");
+			System.out.println("champion select ended");
 			
 			//halts the program until loadScreen is finished
 			//explains what the bot is seeing
 			while(loadScreen.isVisible())
-				System.out.println("Waiting to finish loading into game");
+				System.out.println("waiting to finish loading into game");
 			
-			System.out.println("Finished loading into game");
+			System.out.println("finished loading into game");
 		}
 		else
 		{

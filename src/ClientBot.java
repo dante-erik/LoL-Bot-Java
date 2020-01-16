@@ -4,11 +4,11 @@ public class ClientBot
 {
 	ClientPlayer player;
 	//all of these PixelGroups do not change based on champion
-	//these 2 are protected because they are used in ChampionRoleBot files
+	//these 3 are protected because they are used in ChampionRoleBot files
 	protected PixelGroup championSelect;
 	protected PixelGroup loadScreen;
+	protected PixelGroup acceptMatchButton;
 	private PixelGroup startQueueButton;
-	private PixelGroup acceptMatchButton;
 	private PixelGroup honorSelect;
 	private PixelGroup playAgainButton;
 	private PixelGroup dailyReward;
