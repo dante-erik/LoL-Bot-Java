@@ -29,12 +29,12 @@ public class AsheMidBot extends ClientBot
 			if(isNewGame)
 			{
 				System.out.println("waiting 4 sec before buying items");
-				player.rp.delay(4000);
+				player.delay(4000);
 				player.buyStartingItems();
 				player.upgradeRQWE();
 				player.lockCamera();
 				System.out.println("waiting 1 minute for minions to spawn");
-				player.rp.delay(60000);
+				player.delay(60000);
 				isNewGame = false;
 			}
 			//stay in inGame cycle and avoid re-evaluating if(startingNewGame)

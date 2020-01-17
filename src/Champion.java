@@ -73,4 +73,9 @@ public class Champion
 		rp.keyClick(item);
 		shopBuyHotkey();
 	}
+	
+	public void delay(int milliseconds)
+	{
+		rp.delay(milliseconds);
+	}
 }
