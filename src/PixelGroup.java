@@ -23,9 +23,9 @@ public class PixelGroup
 	}
 	
 	//return boolean isVisible after updating boolean with 0 tolerance
-	public void isVisible()
+	public boolean isVisible()
 	{
-		isVisible(0);
+		return isVisible(0);
 	}
 	
 	//return boolean isVisible after updating boolean with N tolerance
@@ -34,7 +34,7 @@ public class PixelGroup
 		//check if each Pixel is visible on the screen
 		for(int i = 0; i < pixels.size(); i++)
 		{
-			//if the pixel being scanned is not visible, visible is false
+			//if the pixel being scanned is not visible, return false for the whole PixelGroup
 			if(!pixels.get(i).isVisible(tolerance))
 			{
 				return false;
