@@ -69,7 +69,6 @@ public class AsheMidBot extends ClientBot
 		else if(championSelect.isVisible())
 		{
 			player.selectAshe();
-			player.delay(1500);
 			player.callMid();
 			if(runesTab.isVisible())
 				player.selectRunesFlashHeal();
