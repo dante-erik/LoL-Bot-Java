@@ -70,8 +70,10 @@ public class AsheMidBot extends ClientBot
 		{
 			player.selectAshe();
 			player.callMid();
+			//different methods for flash and heal / flash and heal with runes because
+			//their positions change when runes are visible
 			if(runesTab.isVisible())
-				player.selectRunesFlashHeal();
+				player.selectFlashHealAndRunes();
 			else
 				player.selectFlashHeal();
 			player.lockIn();
