@@ -22,7 +22,7 @@ public class ClientBot
 		championSelect = new PixelGroup(new Pixel(1148, 749, 3, 58, 70));
 		loadScreen = new PixelGroup(new Pixel(955, 578, 57, 53, 50));
 		acceptMatchButton = new PixelGroup(new Pixel(994, 361, 33, 77, 98));
-		runesTab = new PixelGroup(new Pixel(977, 830, 16, 22, 26));
+		runesTab = new PixelGroup(new Pixel(1179, 860, 90, 89, 85));
 		startQueueButton = new PixelGroup(new Pixel(635, 585, 26, 55, 32));
 		honorSelect = new PixelGroup(new Pixel(882, 216, 225, 230, 210));
 		playAgainButton = new PixelGroup(new Pixel(1128, 731, 9, 32, 40));
