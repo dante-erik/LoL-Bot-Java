@@ -48,17 +48,170 @@ public class AsheMidPlayer extends Champion
 		rp.setAutoDelay(0);
 	}
 	
-	public void selectRunesFlashHeal()
+	public void selectFlashHealAndRunes()
 	{
 		//slow down
 		rp.setAutoDelay(100);
 		
-		//runes tab
-		rp.mouseMove(873, 845);
+		//runes edit button
+		rp.mouseMove();
 		rp.mouseClick(1);
 		
-		//preset precision runes
-		rp.mouseMove(877, 739);
+		//rune pages selection
+		rp.mouseMove();
+		rp.mouseClick(1);
+		
+		//top editable rune page
+		rp.mouseMove();
+		rp.mouseClick(1);
+		
+		//the pattern of action 1, action 2, action 1 is repeated from here on
+		
+		//this pattern is used to deal with the 2 modes for
+		//building rune pages the user may have selected
+		//and also catches edge cases where riots client is buggy
+		//one bug is some runes are in the open state upon opening rune editing
+		
+		//precision keystone tree icon
+		rp.mouseMove();
+		rp.mouseClick(1);
+		
+		//if the keystone selection tree wasnt already open, this opens it
+		//keystone trees selection
+		rp.mouseMove();
+		rp.mouseClick(1);
+		
+		//always closes keystone trees selection
+		//precision keystone tree icon
+		rp.mouseMove();
+		rp.mouseClick(1);
+		
+		//fleet footwork keystone
+		rp.mouseMove();
+		rp.mouseClick(1);
+		
+		//keystones in precision
+		rp.mouseMove();
+		rp.mouseClick(1);
+		
+		//fleet footwork keystone
+		rp.mouseMove();
+		rp.mouseClick(1);
+		
+		//triumph
+		rp.mouseMove();
+		rp.mouseClick(1);
+		
+		//top row
+		rp.mouseMove();
+		rp.mouseClick(1);
+		
+		//triumph
+		rp.mouseMove();
+		rp.mouseClick(1);
+		
+		//legend: bloodline
+		rp.mouseMove();
+		rp.mouseClick(1);
+		
+		//middle row
+		rp.mouseMove();
+		rp.mouseClick(1);
+		
+		//legend: bloodline
+		rp.mouseMove();
+		rp.mouseClick(1);
+		
+		//coup de grace
+		rp.mouseMove();
+		rp.mouseClick(1);
+		
+		//bottom row
+		rp.mouseMove();
+		rp.mouseClick(1);
+		
+		//coup de grace
+		rp.mouseMove();
+		rp.mouseClick(1);
+		
+		//resolve secondary tree
+		rp.mouseMove();
+		rp.mouseClick(1);
+		
+		//secondary tree selection
+		rp.mouseMove();
+		rp.mouseClick(1);
+		
+		//resolve secondary tree
+		rp.mouseMove();
+		rp.mouseClick(1);
+		
+		//second wind
+		rp.mouseMove();
+		rp.mouseClick(1);
+		
+		//top secondary row
+		rp.mouseMove();
+		rp.mouseClick(1);
+		
+		//second wind
+		rp.mouseMove();
+		rp.mouseClick(1);
+		
+		//revitalize
+		rp.mouseMove();
+		rp.mouseClick(1);
+		
+		//middle secondary row
+		rp.mouseMove();
+		rp.mouseClick(1);
+		
+		//revitalize
+		rp.mouseMove();
+		rp.mouseClick(1);
+		
+		//attack speed
+		rp.mouseMove();
+		rp.mouseClick(1);
+		
+		//top stats row
+		rp.mouseMove();
+		rp.mouseClick(1);
+		
+		//attack speed
+		rp.mouseMove();
+		rp.mouseClick(1);
+		
+		//attack damage
+		rp.mouseMove();
+		rp.mouseClick(1);
+		
+		//middle stats row
+		rp.mouseMove();
+		rp.mouseClick(1);
+		
+		//attack damage
+		rp.mouseMove();
+		rp.mouseClick(1);
+		
+		//armor
+		rp.mouseMove();
+		rp.mouseClick(1);
+		
+		//bottom stats row
+		rp.mouseMove();
+		rp.mouseClick(1);
+		
+		//armor
+		rp.mouseMove();
+		rp.mouseClick(1);
+		
+		//save button
+		rp.mouseMove();
+		rp.mouseClick(1);
+		
+		//rune editing [x] button
+		rp.mouseMove();
 		rp.mouseClick(1);
 		
 		//left summoner spell
@@ -77,8 +230,9 @@ public class AsheMidPlayer extends Champion
 		rp.mouseMove(945, 698);
 		rp.mouseClick(1);
 		
-		//if the second summoner spell couldnt be selected, this closes the selection screen
-		//enemy summoner 4, arbitrary
+		//if the second summoner spell couldnt be selected
+		//this closes the selection screen
+		//enemy summoner 4 (arbitrary location)
 		rp.mouseMove(1369, 549);
 		rp.mouseClick(1);
 		
