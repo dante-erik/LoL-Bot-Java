@@ -39,8 +39,9 @@ public class AsheMidPlayer extends Champion
 		rp.mouseMove(823, 699);
 		rp.mouseClick(1);
 		
-		//if the second summoner spell couldnt be selected, this closes the selection screen
-		//enemy summoner 4, arbitrary
+		//if the second summoner spell couldnt be selected
+		//this closes the selection screen
+		//enemy summoner 4 (arbitrary location)
 		rp.mouseMove(1369, 549);
 		rp.mouseClick(1);
 		
@@ -48,7 +49,38 @@ public class AsheMidPlayer extends Champion
 		rp.setAutoDelay(0);
 	}
 	
-	public void selectFlashHealAndRunes()
+	public void selectFlashHealMovedByRunes()
+	{
+		//slow down
+		rp.setAutoDelay(100);
+		
+		//left summoner spell
+		rp.mouseMove(1009, 843);
+		rp.mouseClick(1);
+		
+		//flash icon
+		rp.mouseMove(1064, 636);
+		rp.mouseClick(1);
+		
+		//right summoner spell
+		rp.mouseMove(1056, 843);
+		rp.mouseClick(1);
+		
+		//heal icon
+		rp.mouseMove(945, 698);
+		rp.mouseClick(1);
+		
+		//if the second summoner spell couldnt be selected
+		//this closes the selection screen
+		//enemy summoner 4 (arbitrary location)
+		rp.mouseMove(1369, 549);
+		rp.mouseClick(1);
+		
+		//speed up
+		rp.setAutoDelay(0);
+	}
+	
+	public void editRunePage()
 	{
 		//slow down
 		rp.setAutoDelay(100);
@@ -212,28 +244,6 @@ public class AsheMidPlayer extends Champion
 		
 		//rune editing [x] button
 		rp.mouseMove();
-		rp.mouseClick(1);
-		
-		//left summoner spell
-		rp.mouseMove(1009, 843);
-		rp.mouseClick(1);
-		
-		//flash icon
-		rp.mouseMove(1064, 636);
-		rp.mouseClick(1);
-		
-		//right summoner spell
-		rp.mouseMove(1056, 843);
-		rp.mouseClick(1);
-		
-		//heal icon
-		rp.mouseMove(945, 698);
-		rp.mouseClick(1);
-		
-		//if the second summoner spell couldnt be selected
-		//this closes the selection screen
-		//enemy summoner 4 (arbitrary location)
-		rp.mouseMove(1369, 549);
 		rp.mouseClick(1);
 		
 		//speed up
