@@ -73,28 +73,26 @@ public class AsheMidBot extends ClientBot
 			//different methods for flash and heal / flash and heal with runes because
 			//their positions change when runes are visible
 			if(runesTab.isVisible())
-				player.selectFlashHealAndRunes();
+			{
+				player.selectFlashHealMovedByRunes();
+				player.editRunePage();
+			}
 			else
+			{
 				player.selectFlashHeal();
+			}
 			player.lockIn();
 			//if championSelect is reached, the bot has finished its previous game
 			isNewGame = true;
 			
-			//halts the program until championSelect is finished
 			//avoids repeating callRole()
-			// && !acceptMatchButton.isVisible() allows the program to stop waiting
-			// if another player dodges and the bot "accept match" button pop up
-			while(!loadScreen.isVisible() && !acceptMatchButton.isVisible())
-				System.out.println("waiting for champion select to end");
-			
-			System.out.println("champion select ended");
-			
-			//halts the program until loadScreen is finished
-			//explains what the bot is seeing
-			while(loadScreen.isVisible())
-				System.out.println("waiting to finish loading into game");
-			
-			System.out.println("finished loading into game");
+			//waits for 1 of 3 things to happen
+			//1: champ select finished normally
+			//2: someone dodged
+			//3: saving runes failed
+			//3's edgecase, if runes failed AND someone dodged, this loops would freeze the bot, so runesFailedToSave is nessecary
+			while(!loadScreen.isVisible() && !acceptMatchButton.isVisible() && !runesFailedToSave.isVisible())
+				System.out.println();
 		}
 		else
 		{
