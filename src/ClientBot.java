@@ -66,7 +66,7 @@ public class ClientBot
 		}
 		else if(runesFailedToSave.isVisible())
 		{
-			player.declineSaveRunesRequest();
+			player.declineSaveRunePageRequest();
 			//decline because it's likely the bot messed up and
 			//left rune slots open, better to go with a filled in but
 			//possibly non-optimal rune page than an incomplete one

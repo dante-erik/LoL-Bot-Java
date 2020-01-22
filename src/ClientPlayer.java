@@ -58,10 +58,10 @@ public class ClientPlayer
 		rp.mouseClick(1);
 	}
 	
-	public void declineRunesSaveRequest()
+	public void declineSaveRunePageRequest()
 	{
 		//No button
-		rp.mouseMove(994, 551, 33, 37, 42);
+		rp.mouseMove(994, 554);
 		rp.mouseClick(1);
 	}
 }

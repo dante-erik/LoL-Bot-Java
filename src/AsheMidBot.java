@@ -91,7 +91,7 @@ public class AsheMidBot extends ClientBot
 			//2: someone dodged
 			//3: saving runes failed
 			//3's edgecase, if runes failed AND someone dodged, this loops would freeze the bot, so runesFailedToSave is nessecary
-			while(!loadScreen.isVisible() && !acceptMatchButton.isVisible() && !runesFailedToSave.isVisible())
+			while(!inGame.isVisible() && !acceptMatchButton.isVisible() && !runesFailedToSave.isVisible())
 				System.out.println();
 		}
 		else
