@@ -86,15 +86,15 @@ public class AsheMidPlayer extends Champion
 		rp.setAutoDelay(100);
 		
 		//runes edit button
-		rp.mouseMove();
+		rp.mouseMove(756, 842);
 		rp.mouseClick(1);
 		
 		//rune pages selection
-		rp.mouseMove();
+		rp.mouseMove(611, 284);
 		rp.mouseClick(1);
 		
 		//top editable rune page
-		rp.mouseMove();
+		rp.mouseMove(598, 369);
 		rp.mouseClick(1);
 		
 		//the pattern of action 1, action 2, action 1 is repeated from here on
@@ -105,145 +105,145 @@ public class AsheMidPlayer extends Champion
 		//one bug is some runes are in the open state upon opening rune editing
 		
 		//precision keystone tree icon
-		rp.mouseMove();
+		rp.mouseMove(561, 367);
 		rp.mouseClick(1);
 		
 		//if the keystone selection tree wasnt already open, this opens it
 		//keystone trees selection
-		rp.mouseMove();
+		rp.mouseMove(488, 370);
 		rp.mouseClick(1);
 		
 		//always closes keystone trees selection
 		//precision keystone tree icon
-		rp.mouseMove();
+		rp.mouseMove(561, 367);
 		rp.mouseClick(1);
 		
 		//fleet footwork keystone
-		rp.mouseMove();
+		rp.mouseMove(664, 490);
 		rp.mouseClick(1);
 		
 		//keystones in precision
-		rp.mouseMove();
+		rp.mouseMove(488, 488);
 		rp.mouseClick(1);
 		
 		//fleet footwork keystone
-		rp.mouseMove();
+		rp.mouseMove(664, 490);
 		rp.mouseClick(1);
 		
 		//triumph
-		rp.mouseMove();
+		rp.mouseMove(639, 585);
 		rp.mouseClick(1);
 		
 		//top row
-		rp.mouseMove();
+		rp.mouseMove(488, 584);
 		rp.mouseClick(1);
 		
 		//triumph
-		rp.mouseMove();
+		rp.mouseMove(639, 585);
 		rp.mouseClick(1);
 		
 		//legend: bloodline
-		rp.mouseMove();
+		rp.mouseMove(705, 674);
 		rp.mouseClick(1);
 		
 		//middle row
-		rp.mouseMove();
+		rp.mouseMove(488, 674);
 		rp.mouseClick(1);
 		
 		//legend: bloodline
-		rp.mouseMove();
+		rp.mouseMove(705, 674);
 		rp.mouseClick(1);
 		
 		//coup de grace
-		rp.mouseMove();
+		rp.mouseMove(574, 763);
 		rp.mouseClick(1);
 		
 		//bottom row
-		rp.mouseMove();
+		rp.mouseMove(488, 762);
 		rp.mouseClick(1);
 		
 		//coup de grace
-		rp.mouseMove();
+		rp.mouseMove(574, 763);
 		rp.mouseClick(1);
 		
 		//resolve secondary tree
-		rp.mouseMove();
+		rp.mouseMove(989, 371);
 		rp.mouseClick(1);
 		
 		//secondary tree selection
-		rp.mouseMove();
+		rp.mouseMove(813, 371);
 		rp.mouseClick(1);
 		
 		//resolve secondary tree
-		rp.mouseMove();
+		rp.mouseMove(989, 371);
 		rp.mouseClick(1);
 		
 		//second wind
-		rp.mouseMove();
+		rp.mouseMove(964, 534);
 		rp.mouseClick(1);
 		
 		//top secondary row
-		rp.mouseMove();
+		rp.mouseMove(813, 481);
 		rp.mouseClick(1);
 		
 		//second wind
-		rp.mouseMove();
+		rp.mouseMove(964, 534);
 		rp.mouseClick(1);
 		
 		//revitalize
-		rp.mouseMove();
+		rp.mouseMove(965, 611);
 		rp.mouseClick(1);
 		
 		//middle secondary row
-		rp.mouseMove();
+		rp.mouseMove(814, 587);
 		rp.mouseClick(1);
 		
 		//revitalize
-		rp.mouseMove();
+		rp.mouseMove(965, 611);
 		rp.mouseClick(1);
 		
 		//attack speed
-		rp.mouseMove();
+		rp.mouseMove(965, 674);
 		rp.mouseClick(1);
 		
 		//top stats row
-		rp.mouseMove();
+		rp.mouseMove(813, 674);
 		rp.mouseClick(1);
 		
 		//attack speed
-		rp.mouseMove();
+		rp.mouseMove(965, 674);
 		rp.mouseClick(1);
 		
 		//attack damage
-		rp.mouseMove();
+		rp.mouseMove(899, 716);
 		rp.mouseClick(1);
 		
 		//middle stats row
-		rp.mouseMove();
+		rp.mouseMove(814, 716);
 		rp.mouseClick(1);
 		
 		//attack damage
-		rp.mouseMove();
+		rp.mouseMove(899, 716);
 		rp.mouseClick(1);
 		
 		//armor
-		rp.mouseMove();
+		rp.mouseMove(965, 763);
 		rp.mouseClick(1);
 		
 		//bottom stats row
-		rp.mouseMove();
+		rp.mouseMove(814, 763);
 		rp.mouseClick(1);
 		
 		//armor
-		rp.mouseMove();
+		rp.mouseMove(965, 763);
 		rp.mouseClick(1);
 		
 		//save button
-		rp.mouseMove();
+		rp.mouseMove(828, 283);
 		rp.mouseClick(1);
 		
 		//rune editing [x] button
-		rp.mouseMove();
+		rp.mouseMove(1484, 232);
 		rp.mouseClick(1);
 		
 		//speed up
