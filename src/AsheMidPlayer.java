@@ -332,7 +332,7 @@ public class AsheMidPlayer extends Champion
 	public void attack()
 	{
 		rp.mouseMove(1883, 844);
-		rp.keyClick("a");
+		rp.keyClick("qa");
 		rp.mouseClick(1);
 	}
 	
