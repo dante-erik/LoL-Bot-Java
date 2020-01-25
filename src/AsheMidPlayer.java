@@ -21,7 +21,7 @@ public class AsheMidPlayer extends Champion
 	public void selectFlashHeal()
 	{
 		//slow down
-		rp.setAutoDelay(100);
+		rp.setAutoDelay(200);
 		
 		//left summoner spell
 		rp.mouseMove(888, 842);
@@ -52,7 +52,7 @@ public class AsheMidPlayer extends Champion
 	public void selectFlashHealMovedByRunes()
 	{
 		//slow down
-		rp.setAutoDelay(100);
+		rp.setAutoDelay(200);
 		
 		//left summoner spell
 		rp.mouseMove(1009, 843);
@@ -80,10 +80,10 @@ public class AsheMidPlayer extends Champion
 		rp.setAutoDelay(0);
 	}
 	
-	public void editRunePage()
+	public void selectHighestRunePage()
 	{
 		//slow down
-		rp.setAutoDelay(100);
+		rp.setAutoDelay(200);
 		
 		//runes edit button
 		rp.mouseMove(756, 842);
@@ -97,7 +97,16 @@ public class AsheMidPlayer extends Champion
 		rp.mouseMove(598, 369);
 		rp.mouseClick(1);
 		
-		//the pattern of action 1, action 2, action 1 is repeated from here on
+		//speed up
+		rp.setAutoDelay(0);
+	}
+	
+	public void editRunePage()
+	{
+		//slow down
+		rp.setAutoDelay(200);
+		
+		//the pattern of action 1, action 2, action 1 is repeated intentionally
 		
 		//this pattern is used to deal with the 2 modes for
 		//building rune pages the user may have selected
@@ -238,6 +247,15 @@ public class AsheMidPlayer extends Champion
 		rp.mouseMove(965, 763);
 		rp.mouseClick(1);
 		
+		//speed up
+		rp.setAutoDelay(0);
+	}
+	
+	public void saveAndExitRunePage()
+	{
+		//slow down
+		rp.setAutoDelay(200);
+		
 		//save button
 		rp.mouseMove(828, 283);
 		rp.mouseClick(1);
@@ -264,7 +282,8 @@ public class AsheMidPlayer extends Champion
 	
 	public void buyStartingItems()
 	{
-		rp.setAutoDelay(100);
+		//speed is not important at the very start of each game
+		rp.setAutoDelay(200);
 		
 		//open shop
 		rp.keyClick("p");
@@ -279,16 +298,19 @@ public class AsheMidPlayer extends Champion
 		//escape is the safest way to close the shop
 		rp.keyClick(KeyEvent.VK_ESCAPE);
 		
+		//speed up
 		rp.setAutoDelay(0);
 	}
 	
 	public void buyItems()
 	{
-		//slows bot down to buy items
-		rp.setAutoDelay(100);
+		//delayed inside buyItem method
 		
 		//open shop
 		rp.keyClick("p");
+		
+		//opening shop can be laggy, extra time to load it
+		rp.delay(250);
 		
 		//berserkers greaves
 		buyItem("ber");
@@ -317,9 +339,6 @@ public class AsheMidPlayer extends Champion
 		//close shop with escape, because if an item couldnt be bought, [p] will not close the shop
 		//escape is the safest way to close the shop
 		rp.keyClick(KeyEvent.VK_ESCAPE);
-		
-		//speeds bot back up
-		rp.setAutoDelay(0);
 	}
 	
 	public void upgradeRQWE()

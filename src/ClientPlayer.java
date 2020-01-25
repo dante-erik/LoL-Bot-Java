@@ -6,6 +6,17 @@ public class ClientPlayer
 	
 	public ClientPlayer() throws AWTException {}
 	
+	public void leftClickAt(int x, int y)
+	{
+		rp.mouseMove(x, y);
+		rp.mouseClick(1);
+	}
+	
+	public int randomInt(int min, int max)
+	{
+		return rp.getRandInt(min, max);
+	}
+	
 	public void startQueue()
 	{
 		//start queue button
@@ -62,6 +73,13 @@ public class ClientPlayer
 	{
 		//No button
 		rp.mouseMove(994, 554);
+		rp.mouseClick(1);
+	}
+	
+	public void dismissCannotCreateCustomRunes()
+	{
+		//OK button
+		rp.mouseMove(960, 560);
 		rp.mouseClick(1);
 	}
 }
