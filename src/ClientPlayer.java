@@ -36,6 +36,11 @@ public class ClientPlayer
 		//teammate portrait
 		rp.mouseMove(1138, 521);
 		rp.mouseClick(1);
+		
+		//sometimes wont accept only 1 click, client is bad at registering clicks
+		rp.delay(500);
+		
+		rp.mouseClick(1);
 	}
 	
 	public void dismissLevelUp()
@@ -64,6 +69,10 @@ public class ClientPlayer
 		//champion portrait's select button
 		rp.mouseMove(955, 548);
 		rp.mouseClick(1);
+		
+		//was moving too fast to register properly
+		rp.delay(1000);
+		
 		//ok button
 		rp.mouseMove(960, 837);
 		rp.mouseClick(1);
