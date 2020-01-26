@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.awt.event.KeyEvent;
 
 public class ClientPlayer
 {
@@ -76,6 +77,13 @@ public class ClientPlayer
 		//ok button
 		rp.mouseMove(960, 837);
 		rp.mouseClick(1);
+		
+		//occasionally the 'select' button is unclickable
+		//to avoid stalling, escape closes the selection screen without selecting a champion
+		//the selection screen reappears upon relogging
+		rp.keyClick(KeyEvent.VK_ESCAPE);
+		rp.keyClick(KeyEvent.VK_ESCAPE);
+		rp.keyClick(KeyEvent.VK_ESCAPE);
 	}
 	
 	public void declineSaveRunePageRequest()
