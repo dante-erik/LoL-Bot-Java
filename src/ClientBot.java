@@ -11,7 +11,7 @@ public class ClientBot
 	protected PixelGroup championSearchBox;
 	protected PixelGroup acceptMatchButton;
 	protected PixelGroup startQueueButton;
-	private PixelGroup runesFailedToSave;
+	private PixelGroup problemSelectingChampionOrRunesFailedToSave;
 	private PixelGroup loadScreen;
 	private PixelGroup honorSelect;
 	private PixelGroup playAgainButton;
@@ -32,7 +32,7 @@ public class ClientBot
 		championSearchBox = new PixelGroup(new Pixel(1146, 264, 3, 8, 8));
 		acceptMatchButton = new PixelGroup(new Pixel(994, 361, 33, 77, 98));
 		startQueueButton = new PixelGroup(new Pixel(635, 585, 26, 55, 32));
-		runesFailedToSave = new PixelGroup(new Pixel(855, 497, 93, 94, 89));
+		problemSelectingChampionOrRunesFailedToSave = new PixelGroup(new Pixel(855, 497, 93, 94, 89));
 		loadScreen = new PixelGroup(new Pixel(955, 578, 57, 53, 50));
 		honorSelect = new PixelGroup(new Pixel(882, 216, 225, 230, 210));
 		playAgainButton = new PixelGroup(new Pixel(1128, 731, 9, 32, 40));
@@ -96,16 +96,24 @@ public class ClientBot
 			
 			player.dismissMissions();
 		}
-		else if(runesFailedToSave.isVisible())
+		else if(problemSelectingChampionOrRunesFailedToSave.isVisible())
 		{
-			System.out.println("rune save failed");
+			//problem selecting champion is more common
+			//so it is assumed before rune save failure
+			System.out.println("problem selecting champion");
 			
-			player.declineSaveRunePageRequest();
-			//decline because it's likely the bot messed up and
-			//left rune slots open, better to go with a filled in but
-			//possibly non-optimal rune page than an incomplete one
+			player.dismissProblemSelectingChampion();
 			
-			//this will almost never run, edge case
+			//true when runes fail to save
+			//same pixels visible for runes and champion error messages
+			if(problemSelectingChampionOrRunesFailedToSave.isVisible())
+			{
+				System.out.println("rune save failed");
+				
+				//this will almost never run, edge case
+				//bot chooses to not save runes, safest choice
+				player.declineRunePageSaveRequest();
+			}
 		}
 		else if(cannotCreateCustomRunes.isVisible())
 		{

@@ -39,7 +39,7 @@ public class ClientPlayer
 		rp.mouseClick(1);
 		
 		//sometimes wont accept only 1 click, client is bad at registering clicks
-		rp.delay(500);
+		rp.delay(250);
 		
 		rp.mouseClick(1);
 	}
@@ -97,7 +97,7 @@ public class ClientPlayer
 		rp.keyClick(KeyEvent.VK_ESCAPE);
 	}
 	
-	public void declineSaveRunePageRequest()
+	public void declineRunePageSaveRequest()
 	{
 		//No button
 		rp.mouseMove(994, 554);
@@ -108,6 +108,13 @@ public class ClientPlayer
 	{
 		//OK button
 		rp.mouseMove(960, 560);
+		rp.mouseClick(1);
+	}
+	
+	public void dismissProblemSelectingChampion()
+	{
+		//OK button
+		rp.mouseMove(959, 552);
 		rp.mouseClick(1);
 	}
 }
