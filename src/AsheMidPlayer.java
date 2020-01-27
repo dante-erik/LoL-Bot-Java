@@ -357,7 +357,7 @@ public class AsheMidPlayer extends Champion
 	
 	public void castAbilities()
 	{
-		rp.mouseMove(1403, 211);
-		rp.keyClick("qwr");
+		rp.mouseMove(1403, 160);
+		rp.keyClick("wr");
 	}
 }
