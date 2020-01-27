@@ -270,12 +270,14 @@ public class AsheMidPlayer extends Champion
 	
 	public void useFlashHeal()
 	{
+		//bottom left of the champion
 		rp.mouseMove(321, 888);
 		rp.keyClick("df");
 	}
 	
 	public void retreat()
 	{
+		//ally fountain
 		rp.mouseMove(1658, 1065);
 		rp.mouseClick(2);
 	}
@@ -350,6 +352,7 @@ public class AsheMidPlayer extends Champion
 	
 	public void attack()
 	{
+		//enemy nexus
 		rp.mouseMove(1883, 844);
 		rp.keyClick("qa");
 		rp.mouseClick(1);
@@ -357,7 +360,9 @@ public class AsheMidPlayer extends Champion
 	
 	public void castAbilities()
 	{
+		//attack spot, hopefully hits enemies
 		rp.mouseMove(1403, 160);
+		//Q is already cast in attack, E is useless on ashe
 		rp.keyClick("wr");
 	}
 }
