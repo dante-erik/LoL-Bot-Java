@@ -38,18 +38,21 @@ public class ClientPlayer
 		rp.mouseClick(1);
 	}
 	
+	public void clickOKButtonPosition1()
+	{
+		//OK button
+		rp.mouseMove(960, 838);
+		rp.mouseClick(1);
+	}
+	
 	public void dismissLevelUp()
 	{
-		//ok button
-		rp.mouseMove(958, 839);
-		rp.mouseClick(1);
+		clickOKButtonPosition1();
 	}
 	
 	public void dismissMissions()
 	{
-		//ok button
-		rp.mouseMove(961, 838);
-		rp.mouseClick(1);
+		clickOKButtonPosition1();
 	}
 	
 	public void playAgain()
@@ -68,9 +71,7 @@ public class ClientPlayer
 		//was moving too fast to register properly
 		rp.delay(1000);
 		
-		//ok button
-		rp.mouseMove(960, 837);
-		rp.mouseClick(1);
+		clickOKButtonPosition1();
 	}
 	
 	public void bypassDailyReward()
@@ -82,6 +83,8 @@ public class ClientPlayer
 		//the selection screen reappears upon relogging
 		
 		//THIS DOES NOT AQUIRE THE CHAMPION SHARD
+		
+		//champion's highlited portion
 		rp.mouseMove(970, 653);
 		rp.mouseClick(1);
 		rp.mouseClick(1);
@@ -98,17 +101,25 @@ public class ClientPlayer
 		rp.mouseClick(1);
 	}
 	
-	public void dismissCannotCreateCustomRunes()
+	public void clickOKButtonPosition2()
 	{
 		//OK button
-		rp.mouseMove(960, 560);
+		rp.mouseMove(960, 556);
 		rp.mouseClick(1);
+	}
+	
+	public void dismissCannotCreateCustomRunes()
+	{
+		clickOKButtonPosition2();
 	}
 	
 	public void dismissProblemSelectingChampion()
 	{
-		//OK button
-		rp.mouseMove(959, 552);
-		rp.mouseClick(1);
+		clickOKButtonPosition2();
+	}
+	
+	public void dismissErrorSettingSummonerSpells()
+	{
+		clickOKButtonPosition2();
 	}
 }

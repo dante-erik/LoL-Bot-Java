@@ -13,6 +13,7 @@ public class ClientBot
 	protected PixelGroup acceptMatchButton;
 	protected PixelGroup startQueueButton;
 	private PixelGroup problemSelectingChampionOrRunesFailedToSave;
+	private PixelGroup errorSettingSummonerSpells;
 	private PixelGroup loadScreen;
 	private PixelGroup honorSelect;
 	private PixelGroup playAgainButton;
@@ -20,8 +21,6 @@ public class ClientBot
 	private PixelGroup dailyReward;
 	private PixelGroup levelUp;
 	private PixelGroup missions;
-	private PixelGroup genericNotificationBox;
-	private PixelGroup notificationBoxDarkenedBackground;
 
 	public ClientBot() throws AWTException
 	{
@@ -35,6 +34,7 @@ public class ClientBot
 		acceptMatchButton = new PixelGroup(new Pixel(994, 361, 33, 77, 98));
 		startQueueButton = new PixelGroup(new Pixel(635, 585, 26, 55, 32));
 		problemSelectingChampionOrRunesFailedToSave = new PixelGroup(new Pixel(855, 497, 93, 94, 89));
+		errorSettingSummonerSpells = new PixelGroup(new Pixel(1106, 568, 96, 73, 31));
 		loadScreen = new PixelGroup(new Pixel(955, 578, 57, 53, 50));
 		honorSelect = new PixelGroup(new Pixel(882, 216, 225, 230, 210));
 		playAgainButton = new PixelGroup(new Pixel(1128, 731, 9, 32, 40));
@@ -42,8 +42,6 @@ public class ClientBot
 		dailyReward = new PixelGroup(new Pixel(323, 296, 50, 40, 30));
 		levelUp = new PixelGroup(new Pixel(1017, 314, 238, 228, 208));
 		missions = new PixelGroup(new Pixel(1263, 353, 86, 66, 35));
-		genericNotificationBox = new PixelGroup(new Pixel(1014, 548, 1, 10, 19));
-		notificationBoxDarkenedBackground = new PixelGroup(new Pixel(702, 842, 2, 6, 9));
 	}
 	
 	public void tick()
@@ -129,6 +127,12 @@ public class ClientBot
 			//runs when champion select sees wrong pixels
 			
 			//this will almost never run, edge case
+		}
+		else if (errorSettingSummonerSpells.isVisible())
+		{
+			System.out.println("error setting summoner spells");
+			
+			player.dismissErrorSettingSummonerSpells();
 		}
 		else if(loadScreen.isVisible())
 		{
