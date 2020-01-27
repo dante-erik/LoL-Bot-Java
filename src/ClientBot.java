@@ -6,6 +6,7 @@ public class ClientBot
 	//all of these PixelGroups do not change based on champion
 	//these are protected because they are used in ChampionRoleBot files
 	protected PixelGroup championSelect;
+	protected PixelGroup championLockedIn;
 	protected PixelGroup runesTab;
 	protected PixelGroup runesLocked;
 	protected PixelGroup championSearchBox;
@@ -26,7 +27,8 @@ public class ClientBot
 	{
 		player = new ClientPlayer();
 
-		championSelect = new PixelGroup(new Pixel(1148, 749, 3, 58, 70));
+		championSelect = new PixelGroup(new Pixel(1259, 220, 92, 70, 28));
+		championLockedIn = new PixelGroup(new Pixel(658, 373, 205, 190, 145));
 		runesTab = new PixelGroup(new Pixel(1179, 860, 90, 89, 85));
 		runesLocked = new PixelGroup(new Pixel(512, 397, 170, 170, 170));
 		championSearchBox = new PixelGroup(new Pixel(1146, 264, 3, 8, 8));
