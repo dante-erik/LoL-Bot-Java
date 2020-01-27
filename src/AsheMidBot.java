@@ -100,6 +100,9 @@ public class AsheMidBot extends ClientBot
 			}
 			
 			player.lockIn();
+			//lock in lags, so delay 1 sec before continuing to scan screen
+			//fixes rune selection bug, champ select phase would rune more than once
+			player.delay(1000);
 			
 			//if championSelect is reached, the bot has finished its previous game, so it must be entering a new game
 			isNewGame = true;
