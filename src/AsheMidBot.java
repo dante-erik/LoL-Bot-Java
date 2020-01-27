@@ -71,12 +71,8 @@ public class AsheMidBot extends ClientBot
 		//championSelect and loadScreen are in ClientBot because they are not champion specific
 		else if(championSelect.isVisible())
 		{
-			//pauses program until 1 of 4 things is visible, in order of most to least common
-			//1: champion search box (default)
-			//2: accept match button (if someone dodged)
-			//3: start queue button (if someone dodged and the bot couldnt accept next game)
-			//4: in game (if by some unholy miracle the bot accidentally picked a champ and entered a game)
-			while(!championSearchBox.isVisible() && !acceptMatchButton.isVisible() && !startQueueButton.isVisible() && !inGame.isVisible())
+			//pauses bot when in champion select and the search box is not visible
+			while(!championSearchBox.isVisible() && championSelect.isVisible())
 				System.out.println("champion search box not visible");
 			
 			player.selectAshe();
