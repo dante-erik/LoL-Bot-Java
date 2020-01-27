@@ -7,15 +7,9 @@ public class ClientPlayer
 	
 	public ClientPlayer() throws AWTException {}
 	
-	public void leftClickAt(int x, int y)
+	public void delay(int milliseconds)
 	{
-		rp.mouseMove(x, y);
-		rp.mouseClick(1);
-	}
-	
-	public int randomInt(int min, int max)
-	{
-		return rp.getRandInt(min, max);
+		rp.delay(milliseconds);
 	}
 	
 	public void startQueue()
@@ -87,7 +81,7 @@ public class ClientPlayer
 		//closes the selection screen without selecting a champion
 		//the selection screen reappears upon relogging
 		
-		//BUT NOTE THIS DOES NOT ACCEPT THE CHAMPION SHARD
+		//THIS DOES NOT AQUIRE THE CHAMPION SHARD
 		rp.mouseMove(970, 653);
 		rp.mouseClick(1);
 		rp.mouseClick(1);

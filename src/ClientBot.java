@@ -27,7 +27,7 @@ public class ClientBot
 	{
 		player = new ClientPlayer();
 
-		championSelect = new PixelGroup(new Pixel(1259, 220, 92, 70, 28));
+		championSelect = new PixelGroup(new Pixel(669, 223, 94, 71, 29));
 		championLockedIn = new PixelGroup(new Pixel(658, 373, 205, 190, 145));
 		runesTab = new PixelGroup(new Pixel(1179, 860, 90, 89, 85));
 		runesLocked = new PixelGroup(new Pixel(512, 397, 170, 170, 170));
@@ -106,6 +106,9 @@ public class ClientBot
 			
 			player.dismissProblemSelectingChampion();
 			
+			//delay so the client can register dismissProblemSelectingChampion
+			player.delay(100);
+			
 			//true when runes fail to save
 			//same pixels visible for runes and champion error messages
 			if(problemSelectingChampionOrRunesFailedToSave.isVisible())
@@ -126,14 +129,6 @@ public class ClientBot
 			//runs when champion select sees wrong pixels
 			
 			//this will almost never run, edge case
-		}
-		else if(genericNotificationBox.isVisible() || notificationBoxDarkenedBackground.isVisible())
-		{
-			System.out.println("unknown notification / text box");
-			
-			//hopefully will click on the correct button(s) by chance
-			//random num ranges are about the center of the client's dimensions
-			player.leftClickAt(player.randomInt(792, 1180), player.randomInt(396, 644));
 		}
 		else if(loadScreen.isVisible())
 		{

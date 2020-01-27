@@ -103,7 +103,7 @@ public class AsheMidBot extends ClientBot
 			//if championSelect is reached, the bot has finished its previous game, so it must be entering a new game
 			isNewGame = true;
 			
-			while(championLockedIn.isVisible())
+			while(championLockedIn.isVisible() && championSelect.isVisible())
 			{
 				System.out.println("waiting for champion select to end");
 				//delay reduces lag

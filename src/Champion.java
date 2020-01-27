@@ -7,6 +7,11 @@ public class Champion
 	
 	public Champion() throws AWTException {}
 	
+	public void delay(int milliseconds)
+	{
+		rp.delay(milliseconds);
+	}
+	
 	public void selectChampion(String championName)
 	{
 		//accuracy over speed
@@ -84,10 +89,5 @@ public class Champion
 		shopBuyHotkey();
 		
 		rp.setAutoDelay(0);
-	}
-	
-	public void delay(int milliseconds)
-	{
-		rp.delay(milliseconds);
 	}
 }
