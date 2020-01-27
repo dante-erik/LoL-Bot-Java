@@ -77,10 +77,21 @@ public class ClientPlayer
 		//ok button
 		rp.mouseMove(960, 837);
 		rp.mouseClick(1);
-		
+	}
+	
+	public void bypassDailyReward()
+	{
 		//occasionally the 'select' button is unclickable
-		//to avoid stalling, escape closes the selection screen without selecting a champion
+		//to avoid stalling
+		//clicking on the champion's highlited portion + hitting escape
+		//closes the selection screen without selecting a champion
 		//the selection screen reappears upon relogging
+		
+		//BUT NOTE THIS DOES NOT ACCEPT THE CHAMPION SHARD
+		rp.mouseMove(970, 653);
+		rp.mouseClick(1);
+		rp.mouseClick(1);
+		rp.mouseClick(1);
 		rp.keyClick(KeyEvent.VK_ESCAPE);
 		rp.keyClick(KeyEvent.VK_ESCAPE);
 		rp.keyClick(KeyEvent.VK_ESCAPE);

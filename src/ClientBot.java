@@ -78,9 +78,17 @@ public class ClientBot
 		}
 		else if(dailyReward.isVisible())
 		{
-			System.out.println("daily reward");
+			System.out.println("accept daily reward");
 			
 			player.acceptDailyReward();
+			
+			//if accepting doesnt work, bypass the daily reward screen
+			if(dailyReward.isVisible())
+			{
+				System.out.println("bypass daily reward");
+				
+				player.bypassDailyReward();
+			}
 		}
 		else if(missions.isVisible())
 		{
