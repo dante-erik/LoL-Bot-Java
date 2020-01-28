@@ -27,7 +27,7 @@ public class AsheMidBot extends ClientBot
 	public void tick()
 	{
 		//check if inGame first, most important PixelGroup
-		if(inGame.isVisible())
+		if(inGame.isVisible(tolerance))
 		{
 			if(isNewGame)
 			{
@@ -41,10 +41,10 @@ public class AsheMidBot extends ClientBot
 				isNewGame = false;
 			}
 			//stay in inGame cycle and avoid re-evaluating if(startingNewGame)
-			else while(inGame.isVisible())
+			else while(inGame.isVisible(tolerance))
 			{
 				//if lowHp is not visible, go back to base and buy items
-				if(!lowHp.isVisible())
+				if(!lowHp.isVisible(tolerance))
 				{
 					player.useFlashHeal();
 					player.retreat();
@@ -52,7 +52,7 @@ public class AsheMidBot extends ClientBot
 					player.upgradeRQWE();
 				}
 				//if not fullHp, but above lowHp, must be in lane taking some kind of damage, so cast abilities will hit enemy
-				else if(!fullHp.isVisible() || qStacksIcon.isVisible())
+				else if(!fullHp.isVisible(tolerance) || qStacksIcon.isVisible(tolerance))
 				{
 					player.castAbilities();
 					player.attack();
@@ -69,10 +69,10 @@ public class AsheMidBot extends ClientBot
 		//if not inGame, check if in championSelect, locking champ before it's stolen is important
 		//if champ gets stolen before the bot can select it, the bot will dodge by not picking a champ
 		//championSelect and loadScreen are in ClientBot because they are not champion specific
-		else if(championSelect.isVisible())
+		else if(championSelect.isVisible(tolerance))
 		{
 			//pauses bot when in champion select and the search box is not visible
-			while(!championSearchBox.isVisible() && championSelect.isVisible())
+			while(!championSearchBox.isVisible(tolerance) && championSelect.isVisible(tolerance))
 				System.out.println("champion search box not visible");
 			
 			player.selectAshe();
@@ -85,12 +85,12 @@ public class AsheMidBot extends ClientBot
 			
 			//different methods for flash and heal / flash and heal with runes because
 			//their positions change when runes are visible
-			if(runesTab.isVisible())
+			if(runesTab.isVisible(tolerance))
 			{
 				player.selectFlashHealMovedByRunes();
 				player.selectHighestRunePage();
 				//if runes are not locked, edit runes (preset pages are locked, edit unlocks at lvl 10)
-				if(!runesLocked.isVisible())
+				if(!runesLocked.isVisible(tolerance))
 					player.editRunePage();
 				player.saveAndExitRunePage();
 			}
@@ -107,7 +107,7 @@ public class AsheMidBot extends ClientBot
 			//if championSelect is reached, the bot has finished its previous game, so it must be entering a new game
 			isNewGame = true;
 			
-			while(championLockedIn.isVisible() && championSelect.isVisible())
+			while(championLockedIn.isVisible(tolerance) && championSelect.isVisible(tolerance))
 			{
 				System.out.println("waiting for champion select to end");
 				//delay reduces lag

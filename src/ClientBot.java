@@ -3,6 +3,7 @@ import java.awt.*;
 public class ClientBot
 {
 	ClientPlayer player;
+	protected final int tolerance;
 	//all of these PixelGroups do not change based on champion
 	//these are protected because they are used in ChampionRoleBot files
 	protected PixelGroup championSelect;
@@ -26,6 +27,9 @@ public class ClientBot
 	public ClientBot() throws AWTException
 	{
 		player = new ClientPlayer();
+		//tolerance = 0 means PixelGroups must match EXACTLY for each RGB on the screen
+		//tolerance > 0 means PixelGroups must be within tolerance +- for each RGB on the screen
+		tolerance = 0;
 
 		championSelect = new PixelGroup(new Pixel(669, 223, 94, 71, 29));
 		championLockedIn = new PixelGroup(new Pixel(658, 373, 205, 190, 145));
@@ -48,57 +52,57 @@ public class ClientBot
 	
 	public void tick()
 	{
-		if(acceptMatchButton.isVisible())
+		if(acceptMatchButton.isVisible(tolerance))
 		{
 			System.out.println("accept match");
 			
 			player.acceptMatch();
 		}
-		else if(startQueueButton.isVisible())
+		else if(startQueueButton.isVisible(tolerance))
 		{
 			System.out.println("start queue");
 			
 			player.startQueue();
 		}
-		else if(playAgainButton.isVisible())
+		else if(playAgainButton.isVisible(tolerance))
 		{
 			System.out.println("play again");
 			
 			player.playAgain();
 		}
-		else if(honorSelect.isVisible())
+		else if(honorSelect.isVisible(tolerance))
 		{
 			System.out.println("honor teammate");
 			
 			player.honorTeammate();
 		}
-		else if(levelUp.isVisible())
+		else if(levelUp.isVisible(tolerance))
 		{
 			System.out.println("level up");
 			
 			player.dismissLevelUp();
 		}
-		else if(dailyReward.isVisible())
+		else if(dailyReward.isVisible(tolerance))
 		{
 			System.out.println("accept daily reward");
 			
 			player.acceptDailyReward();
 			
 			//if accepting doesnt work, bypass the daily reward screen
-			if(dailyReward.isVisible())
+			if(dailyReward.isVisible(tolerance))
 			{
 				System.out.println("bypass daily reward");
 				
 				player.bypassDailyReward();
 			}
 		}
-		else if(missions.isVisible())
+		else if(missions.isVisible(tolerance))
 		{
 			System.out.println("mission complete");
 			
 			player.dismissMissions();
 		}
-		else if(problemSelectingChampionOrRunesFailedToSave.isVisible())
+		else if(problemSelectingChampionOrRunesFailedToSave.isVisible(tolerance))
 		{
 			//problem selecting champion is more common
 			//so it is assumed before rune save failure
@@ -111,7 +115,7 @@ public class ClientBot
 			
 			//true when runes fail to save
 			//same pixels visible for runes and champion error messages
-			if(problemSelectingChampionOrRunesFailedToSave.isVisible())
+			if(problemSelectingChampionOrRunesFailedToSave.isVisible(tolerance))
 			{
 				System.out.println("rune save failed");
 				
@@ -120,7 +124,7 @@ public class ClientBot
 				player.declineRunePageSaveRequest();
 			}
 		}
-		else if(cannotCreateCustomRunes.isVisible())
+		else if(cannotCreateCustomRunes.isVisible(tolerance))
 		{
 			System.out.println("cannot create custom runes");
 			
@@ -130,13 +134,13 @@ public class ClientBot
 			
 			//this will almost never run, edge case
 		}
-		else if (errorSettingSummonerSpells.isVisible())
+		else if (errorSettingSummonerSpells.isVisible(tolerance))
 		{
 			System.out.println("error setting summoner spells");
 			
 			player.dismissErrorSettingSummonerSpells();
 		}
-		else if(loadScreen.isVisible())
+		else if(loadScreen.isVisible(tolerance))
 		{
 			//player.cursorDance();
 			System.out.println("load screen");
