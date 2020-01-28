@@ -49,6 +49,13 @@ public class Champion
 		rp.setAutoDelay(0);
 	}
 	
+	public void closeUnlockNotification()
+	{
+		// "X" button
+		rp.mouseMove(1012, 738);
+		rp.mouseClick(1);
+	}
+	
 	public void lockIn()
 	{
 		//accuracy over speed

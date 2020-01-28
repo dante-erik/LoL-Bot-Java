@@ -79,6 +79,10 @@ public class AsheMidBot extends ClientBot
 			
 			player.callMid();
 			
+			//unlocks at level 8
+			if(runesNowUnlockedNotification.isVisible())
+				player.closeUnlockNotification();
+			
 			//different methods for flash and heal / flash and heal with runes because
 			//their positions change when runes are visible
 			if(runesTab.isVisible())

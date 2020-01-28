@@ -9,6 +9,7 @@ public class ClientBot
 	protected PixelGroup championLockedIn;
 	protected PixelGroup runesTab;
 	protected PixelGroup runesLocked;
+	protected PixelGroup runesNowUnlockedNotification;
 	protected PixelGroup championSearchBox;
 	protected PixelGroup acceptMatchButton;
 	protected PixelGroup startQueueButton;
@@ -30,6 +31,7 @@ public class ClientBot
 		championLockedIn = new PixelGroup(new Pixel(658, 373, 205, 190, 145));
 		runesTab = new PixelGroup(new Pixel(1179, 860, 90, 89, 85));
 		runesLocked = new PixelGroup(new Pixel(512, 397, 170, 170, 170));
+		runesNowUnlockedNotification = new PixelGroup(new Pixel(1012, 738, 205, 190, 145));
 		championSearchBox = new PixelGroup(new Pixel(1146, 264, 3, 8, 8));
 		acceptMatchButton = new PixelGroup(new Pixel(994, 361, 33, 77, 98));
 		startQueueButton = new PixelGroup(new Pixel(635, 585, 26, 55, 32));
