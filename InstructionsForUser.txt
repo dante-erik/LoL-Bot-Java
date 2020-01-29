@@ -1,0 +1,66 @@
+
+In the current patch, LoL-Bot only works on [1920x1080] monitor resolution, and [1280x720] League of Legends Client resolution.
+
+
+
+Note:	Higher resolution monitors can scale down to [1920x1080] in "Display settings", accessed by right clicking on the desktop.
+
+	LoL-Bot will work properly after changing to [1920x1080] monitor resolution and [1280x720] Client resolution.
+
+
+
+Two methods for changing to the correct in-game League of Legends settings are listed below.
+
+Complete method 1 -OR- method 2 for LoL-Bot to work properly while in-game.
+
+
+___________________________________________________________________________________________________________________________________
+
+Method 1: Manually change settings while in a custom game.
+___________________________________________________________________________________________________________________________________
+
+
+(Required)
+
+1. Hit [Esc] to open the settings while in game.
+
+2. Reset all in-game settings to default. (left click "Restore Defaults" at the top right on each settings tab.)
+
+___________________________________________________________________________________________________________________________________
+
+
+(Required)
+
+1. Select the "GAME" tab.
+
+2. Disable "Attack move on cursor".
+
+___________________________________________________________________________________________________________________________________
+
+
+(Optional)
+
+1. Select the "HOTKEYS" tab
+
+2. Enable "Quick Cast All"
+
+3. Disable "Replace Quick Cast with Quick Cast With Indicator in the quickbind UI"
+
+___________________________________________________________________________________________________________________________________
+
+
+
+Or, complete Method 2
+
+
+___________________________________________________________________________________________________________________________________
+
+Method 2: Replacing PersistedSettings.json
+___________________________________________________________________________________________________________________________________
+
+
+Login to the League of Legends Client (BUT DO NOT ENTER A GAME)
+
+Replace PersistedSettings.json in "C:\Riot Games\League of Legends\Config" with the PersistedSettings.json in LoL-Bot/data
+
+___________________________________________________________________________________________________________________________________
