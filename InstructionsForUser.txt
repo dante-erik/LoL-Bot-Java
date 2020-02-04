@@ -14,53 +14,50 @@ Two methods for changing to the correct in-game League of Legends settings are l
 Complete method 1 -OR- method 2 for LoL-Bot to work properly while in-game.
 
 
-___________________________________________________________________________________________________________________________________
+_______________________________________________________________________________________________________________________________________________________________________________________________________
 
-Method 1: Manually change settings while in a custom game.
-___________________________________________________________________________________________________________________________________
+Method 1: Manually change settings while in game or through the client's "In-Game" settings tabs.
+_______________________________________________________________________________________________________________________________________________________________________________________________________
 
 
 (Required)
 
-1. Hit [Esc] to open the settings while in game.
+1. While in game, hit [Esc] to open the settings menu.
 
 2. Reset all in-game settings to default. (left click "Restore Defaults" at the top right on each settings tab.)
 
-___________________________________________________________________________________________________________________________________
+3. Select the "GAME" tab.
+
+4. Disable "Attack move on cursor".
+
+5. Select the "Interface" tab.
+
+6. Disable "Show Health Bar Animations".
+
+_______________________________________________________________________________________________________________________________________________________________________________________________________
 
 
-(Required)
+(Optional - Reccomended)
 
-1. Select the "GAME" tab.
+1. Select the "HOTKEYS" tab.
 
-2. Disable "Attack move on cursor".
+2. Disable "Replace Quick Cast with Quick Cast With Indicator in the quickbind UI".
 
-___________________________________________________________________________________________________________________________________
-
-
-(Optional)
-
-1. Select the "HOTKEYS" tab
-
-2. Enable "Quick Cast All"
-
-3. Disable "Replace Quick Cast with Quick Cast With Indicator in the quickbind UI"
-
-___________________________________________________________________________________________________________________________________
+_______________________________________________________________________________________________________________________________________________________________________________________________________
 
 
 
-Or, complete Method 2
+Or, complete Method 2.
 
 
-___________________________________________________________________________________________________________________________________
+_______________________________________________________________________________________________________________________________________________________________________________________________________
 
-Method 2: Replacing PersistedSettings.json
-___________________________________________________________________________________________________________________________________
+Method 2: Replacing "PersistedSettings.json".
+_______________________________________________________________________________________________________________________________________________________________________________________________________
 
 
-Login to the League of Legends Client (BUT DO NOT ENTER A GAME)
+1. Login to the League of Legends Client. (BUT DO NOT ENTER A GAME.)
 
-Replace PersistedSettings.json in "C:\Riot Games\League of Legends\Config" with the PersistedSettings.json in LoL-Bot/data
+2. Replace "PersistedSettings.json" in "C:\Riot Games\League of Legends\Config" with the "PersistedSettings.json" in the "data" folder in "LoL-Bot".
 
-___________________________________________________________________________________________________________________________________
+_______________________________________________________________________________________________________________________________________________________________________________________________________
