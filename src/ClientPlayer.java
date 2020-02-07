@@ -3,9 +3,22 @@ import java.awt.event.KeyEvent;
 
 public class ClientPlayer
 {
-	private RobotPlus rp = new RobotPlus();
+	private RobotPlus rp;
 	
-	public ClientPlayer() throws AWTException {}
+	private int globalDelayMultiplier;
+	
+	private int honorTeammateDelay;
+	private int acceptDailyRewardDelay;
+	
+	public ClientPlayer(int globalDelayMultiplier) throws AWTException
+	{
+		rp = new RobotPlus();
+		
+		this.globalDelayMultiplier = globalDelayMultiplier;
+		
+		honorTeammateDelay = (int)(.25 * globalDelayMultiplier);
+		acceptDailyRewardDelay = (int)(1.0 * globalDelayMultiplier);
+	}
 	
 	public void delay(int milliseconds)
 	{
@@ -33,7 +46,7 @@ public class ClientPlayer
 		rp.mouseClick(1);
 		
 		//sometimes wont accept only 1 click, client is bad at registering clicks
-		rp.delay(250);
+		rp.delay(honorTeammateDelay);
 		
 		rp.mouseClick(1);
 	}
@@ -69,7 +82,7 @@ public class ClientPlayer
 		rp.mouseClick(1);
 		
 		//was moving too fast to register properly
-		rp.delay(1000);
+		rp.delay(globalDelayMultiplier);
 		
 		clickOKButtonPosition1();
 	}

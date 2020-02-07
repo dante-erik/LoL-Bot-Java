@@ -3,9 +3,30 @@ import java.awt.event.KeyEvent;
 
 public class Champion
 {
-	protected RobotPlus rp = new RobotPlus();
+	//used in specific ChampionRolePlayer.java files
+	protected RobotPlus rp;
 	
-	public Champion() throws AWTException {}
+	private int globalDelayMultiplier;
+	
+	private int selectChampionDelay;
+	private int callRoleDelay;
+	private int closeUnlockNotificationDelay;
+	private int lockInDelay;
+	private int buyItemDelay;
+	
+	public Champion(int globalDelayMultiplier) throws AWTException
+	{
+		rp = new RobotPlus();
+		
+		this.globalDelayMultiplier = globalDelayMultiplier;
+		
+		selectChampionDelay = (int)(.25 * globalDelayMultiplier);
+		callRoleDelay = (int)(.15 * globalDelayMultiplier);
+		closeUnlockNotificationDelay = (int)(.15 * globalDelayMultiplier);
+		lockInDelay = (int)(.15 * globalDelayMultiplier);
+		buyItemDelay = (int)(.1 * globalDelayMultiplier);
+		
+	}
 	
 	public void delay(int milliseconds)
 	{
@@ -15,7 +36,7 @@ public class Champion
 	public void selectChampion(String championName)
 	{
 		//accuracy over speed
-		rp.setAutoDelay(200);
+		rp.setAutoDelay(selectChampionDelay);
 		
 		//text box for champ search
 		rp.mouseMove(1087, 264);
@@ -34,7 +55,7 @@ public class Champion
 	public void callRole(String role)
 	{
 		//accuracy over speed
-		rp.setAutoDelay(75);
+		rp.setAutoDelay(callRoleDelay);
 		
 		//text bot for msging other players
 		rp.mouseMove(387, 842);
@@ -51,15 +72,18 @@ public class Champion
 	
 	public void closeUnlockNotification()
 	{
+		rp.setAutoDelay(closeUnlockNotificationDelay);
+		
 		// "X" button
 		rp.mouseMove(1012, 738);
 		rp.mouseClick(1);
+		
+		rp.setAutoDelay(0);
 	}
 	
 	public void lockIn()
 	{
-		//accuracy over speed
-		rp.setAutoDelay(75);
+		rp.setAutoDelay(lockInDelay);
 		
 		//lock in button
 		rp.mouseMove(963, 766);
@@ -89,7 +113,7 @@ public class Champion
 	
 	public void buyItem(String item)
 	{
-		rp.setAutoDelay(75);
+		rp.setAutoDelay(buyItemDelay);
 		
 		shopSearchHotkey();
 		rp.keyClick(item);

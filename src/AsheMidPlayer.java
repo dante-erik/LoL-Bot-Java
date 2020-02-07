@@ -3,9 +3,23 @@ import java.awt.event.KeyEvent;
 
 public class AsheMidPlayer extends Champion
 {
-	public AsheMidPlayer() throws AWTException
+	private int globalDelayMultiplier;
+	
+	private int selectFlashHealDelay;
+	private int runePageDelay;
+	private int buyItemsDelay;
+	private int openShopDelay;
+	
+	public AsheMidPlayer(int globalDelayMultiplier) throws AWTException
 	{
-		super();
+		super(globalDelayMultiplier);
+		
+		this.globalDelayMultiplier = globalDelayMultiplier;
+		
+		selectFlashHealDelay = (int)(.4 * globalDelayMultiplier);
+		runePageDelay = (int)(.333 * globalDelayMultiplier);
+		buyItemsDelay = (int)(.05 * globalDelayMultiplier);
+		openShopDelay = (int)(.2 * globalDelayMultiplier);
 	}
 	
 	public void selectAshe()
@@ -21,7 +35,7 @@ public class AsheMidPlayer extends Champion
 	public void selectFlashHeal()
 	{
 		//slow down
-		rp.setAutoDelay(200);
+		rp.setAutoDelay(selectFlashHealDelay);
 		
 		//left summoner spell
 		rp.mouseMove(888, 842);
@@ -52,7 +66,7 @@ public class AsheMidPlayer extends Champion
 	public void selectFlashHealMovedByRunes()
 	{
 		//slow down
-		rp.setAutoDelay(200);
+		rp.setAutoDelay(selectFlashHealDelay);
 		
 		//left summoner spell
 		rp.mouseMove(1009, 843);
@@ -83,7 +97,7 @@ public class AsheMidPlayer extends Champion
 	public void selectHighestRunePage()
 	{
 		//slow down
-		rp.setAutoDelay(200);
+		rp.setAutoDelay(runePageDelay);
 		
 		//runes edit button
 		rp.mouseMove(756, 842);
@@ -104,7 +118,7 @@ public class AsheMidPlayer extends Champion
 	public void editRunePage()
 	{
 		//slow down
-		rp.setAutoDelay(200);
+		rp.setAutoDelay(runePageDelay);
 		
 		//the pattern of action 1, action 2, action 1 is repeated intentionally
 		
@@ -254,7 +268,7 @@ public class AsheMidPlayer extends Champion
 	public void saveAndExitRunePage()
 	{
 		//slow down
-		rp.setAutoDelay(200);
+		rp.setAutoDelay(runePageDelay);
 		
 		//save button
 		rp.mouseMove(828, 283);
@@ -285,10 +299,13 @@ public class AsheMidPlayer extends Champion
 	public void buyStartingItems()
 	{
 		//speed is not important at the very start of each game
-		rp.setAutoDelay(200);
+		rp.setAutoDelay(buyItemsDelay);
 		
 		//open shop
 		rp.keyClick("p");
+		
+		//opening shop can be laggy, extra time to load it
+		rp.delay(openShopDelay);
 		
 		//dorans blade
 		buyItem("bla");
@@ -307,12 +324,13 @@ public class AsheMidPlayer extends Champion
 	public void buyItems()
 	{
 		//delayed inside buyItem method
+		rp.setAutoDelay(buyItemsDelay);
 		
 		//open shop
 		rp.keyClick("p");
 		
 		//opening shop can be laggy, extra time to load it
-		rp.delay(250);
+		rp.delay(openShopDelay);
 		
 		//berserkers greaves
 		buyItem("ber");
@@ -341,6 +359,9 @@ public class AsheMidPlayer extends Champion
 		//close shop with escape, because if an item couldnt be bought, [p] will not close the shop
 		//escape is the safest way to close the shop
 		rp.keyClick(KeyEvent.VK_ESCAPE);
+		
+		//speed up
+		rp.setAutoDelay(0);
 	}
 	
 	public void upgradeRQWE()

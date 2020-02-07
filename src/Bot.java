@@ -7,13 +7,13 @@ public class Bot
 	
 	private ClientBot bot;
 	
-	public Bot(LOLRole role, String championName, Dimension clientRes) throws AWTException
+	public Bot(LOLRole role, String championName, Dimension clientRes, int globalDelayMultiplier, int globalRGBTolerance) throws AWTException
 	{
-		setupBot(role, championName, clientRes);
+		setupBot(role, championName, clientRes, globalDelayMultiplier, globalRGBTolerance);
 		running = new AtomicBoolean(true);
 	}
 	
-	public void setupBot(LOLRole role, String championName, Dimension clientRes) throws AWTException
+	public void setupBot(LOLRole role, String championName, Dimension clientRes, int globalDelayMultiplier, int globalRGBTolerance) throws AWTException
 	{
 		if(role == LOLRole.TOP)
 		{
@@ -26,7 +26,7 @@ public class Bot
 		else if(role == LOLRole.MID)
 		{
 			if(championName.equals("Ashe"))
-				bot = new AsheMidBot();
+				bot = new AsheMidBot(globalDelayMultiplier, globalRGBTolerance);
 			else
 				throw new UnsupportedOperationException();
 		}

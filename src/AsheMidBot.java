@@ -3,18 +3,32 @@ import java.awt.AWTException;
 public class AsheMidBot extends ClientBot
 {
 	private AsheMidPlayer player;
+	
+	private int globalDelayMultiplier;
+	private int globalRGBTolerance;
+	
+	private int lockInDelay;
+	private int championSelectPrintDelay;
+	
 	private boolean isNewGame;
+	
 	//all of these PixelGroups can change based on champion
 	private PixelGroup inGame;
 	private PixelGroup fullHp;
 	private PixelGroup lowHp;
 	private PixelGroup qStacksIcon;
 	
-	public AsheMidBot() throws AWTException
+	public AsheMidBot(int globalDelayMultiplier, int globalRGBTolerance) throws AWTException
 	{
-		super();
+		super(globalDelayMultiplier, globalRGBTolerance);
 		
-		player = new AsheMidPlayer();
+		player = new AsheMidPlayer(globalDelayMultiplier);
+		
+		this.globalDelayMultiplier = globalDelayMultiplier;
+		this.globalRGBTolerance = globalRGBTolerance;
+		
+		lockInDelay = (int)(1.5 * globalDelayMultiplier);
+		championSelectPrintDelay = (int)(1.0 * globalDelayMultiplier);
 		
 		isNewGame = false;
 		
@@ -27,12 +41,12 @@ public class AsheMidBot extends ClientBot
 	public void tick()
 	{
 		//check if inGame first, most important PixelGroup
-		if(inGame.isVisible(tolerance))
+		if(inGame.isVisible(globalRGBTolerance))
 		{
 			if(isNewGame)
 			{
-				System.out.println("waiting 5 sec before buying items");
-				player.delay(5000);
+				System.out.println("waiting 4 sec before buying items");
+				player.delay(4000);
 				player.buyStartingItems();
 				player.upgradeRQWE();
 				player.lockCamera();
@@ -41,10 +55,10 @@ public class AsheMidBot extends ClientBot
 				isNewGame = false;
 			}
 			//stay in inGame cycle and avoid re-evaluating if(startingNewGame)
-			else while(inGame.isVisible(tolerance))
+			else while(inGame.isVisible(globalRGBTolerance))
 			{
 				//if lowHp is not visible, go back to base and buy items
-				if(!lowHp.isVisible(tolerance))
+				if(!lowHp.isVisible(globalRGBTolerance))
 				{
 					player.useFlashHeal();
 					player.retreat();
@@ -52,7 +66,7 @@ public class AsheMidBot extends ClientBot
 					player.upgradeRQWE();
 				}
 				//if not fullHp, but above lowHp, must be in lane taking some kind of damage, so cast abilities will hit enemy
-				else if(!fullHp.isVisible(tolerance) || qStacksIcon.isVisible(tolerance))
+				else if(!fullHp.isVisible(globalRGBTolerance) || qStacksIcon.isVisible(globalRGBTolerance))
 				{
 					player.castAbilities();
 					player.attack();
@@ -69,10 +83,10 @@ public class AsheMidBot extends ClientBot
 		//if not inGame, check if in championSelect, locking champ before it's stolen is important
 		//if champ gets stolen before the bot can select it, the bot will dodge by not picking a champ
 		//championSelect and loadScreen are in ClientBot because they are not champion specific
-		else if(championSelect.isVisible(tolerance))
+		else if(championSelect.isVisible(globalRGBTolerance))
 		{
 			//pauses bot when in champion select and the search box is not visible
-			while(!championSearchBox.isVisible(tolerance) && championSelect.isVisible(tolerance))
+			while(!championSearchBox.isVisible(globalRGBTolerance) && championSelect.isVisible(globalRGBTolerance))
 				System.out.println("champion search box not visible");
 			
 			player.selectAshe();
@@ -80,17 +94,17 @@ public class AsheMidBot extends ClientBot
 			player.callMid();
 			
 			//unlocks at level 8
-			if(runesNowUnlockedNotification.isVisible(tolerance))
+			if(runesNowUnlockedNotification.isVisible(globalRGBTolerance))
 				player.closeUnlockNotification();
 			
 			//different methods for flash and heal / flash and heal with runes because
 			//their positions change when runes are visible
-			if(runesTab.isVisible(tolerance))
+			if(runesTab.isVisible(globalRGBTolerance))
 			{
 				player.selectFlashHealMovedByRunes();
 				player.selectHighestRunePage();
 				//if runes are not locked, edit runes (preset pages are locked, edit unlocks at lvl 10)
-				if(!runesLocked.isVisible(tolerance))
+				if(!runesLocked.isVisible(globalRGBTolerance))
 					player.editRunePage();
 				player.saveAndExitRunePage();
 			}
@@ -102,16 +116,16 @@ public class AsheMidBot extends ClientBot
 			player.lockIn();
 			//lock in lags, so delay 1 sec before continuing to scan screen
 			//fixes rune selection bug, champ select phase would rune more than once
-			player.delay(1000);
+			player.delay(lockInDelay);
 			
 			//if championSelect is reached, the bot has finished its previous game, so it must be entering a new game
 			isNewGame = true;
 			
-			while(championLockedIn.isVisible(tolerance) && championSelect.isVisible(tolerance))
+			while(championLockedIn.isVisible(globalRGBTolerance) && championSelect.isVisible(globalRGBTolerance))
 			{
 				System.out.println("waiting for champion select to end");
 				//delay reduces lag
-				player.delay(1000);
+				player.delay(championSelectPrintDelay);
 			}
 		}
 		else
