@@ -6,7 +6,7 @@ public class RunWithoutGUI
 	{
 		Dimension d = new Dimension(0,0);
 		//1000ms delay is default, 0 RGB tolerance
-		Bot asheBot = new Bot(LOLRole.MID, "Ashe", d, 5000, 0);
+		Bot asheBot = new Bot(LOLRole.MID, "Ashe", d, 1000, 0);
 		asheBot.run();
 	}
 }
