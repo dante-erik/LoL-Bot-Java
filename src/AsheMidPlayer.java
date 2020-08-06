@@ -382,7 +382,7 @@ public class AsheMidPlayer extends Champion
 	public void castAbilities()
 	{
 		//attack spot, hopefully hits enemies
-		rp.mouseMove(1403, 160);
+		rp.mouseMove(1159, 235);
 		//Q is already cast in attack, E is useless on ashe
 		rp.keyClick("wr");
 	}

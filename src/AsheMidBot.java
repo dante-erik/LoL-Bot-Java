@@ -32,10 +32,10 @@ public class AsheMidBot extends ClientBot
 		
 		isNewGame = false;
 		
-		inGame = new PixelGroup(new Pixel(730, 1075, 26, 52, 53));
-		fullHp = new PixelGroup(new Pixel(1094, 1044, 8, 210, 0));
-		lowHp = new PixelGroup(new Pixel(895, 1045, 11, 97, 17));
-		qStacksIcon = new PixelGroup(new Pixel(652, 895, 29, 53, 94));
+		inGame = new PixelGroup(new Pixel(1106, 1011, 16, 31, 30));
+		fullHp = new PixelGroup(new Pixel(1092, 1032, 9, 193, 11));
+		lowHp = new PixelGroup(new Pixel(895, 1030, 12, 123, 16));
+		qStacksIcon = new PixelGroup(new Pixel(664, 839, 255, 255, 255));
 	}
 	
 	public void tick()
