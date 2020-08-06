@@ -3,7 +3,8 @@ import java.awt.event.KeyEvent;
 
 public class ClientPlayer
 {
-	private RobotPlus rp;
+	//why not private? because it's getRandInt() function is used in ClientBot
+	protected RobotPlus rp;
 	
 	private int globalDelayMultiplier;
 	

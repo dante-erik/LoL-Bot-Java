@@ -159,7 +159,7 @@ public class ClientBot
 		}
 		else
 		{
-			System.out.println("nothing visible");
+			System.out.println("nothing visible " + player.rp.getRandInt(100,999));
 		}
 	}
 }
