@@ -55,7 +55,7 @@ public class ClientBot
 		errorSettingSummonerSpells = new PixelGroup(new Pixel(1106, 568, 96, 73, 31));
 		loadScreen = new PixelGroup(new Pixel(955, 578, 57, 53, 50));
 		honorSelect = new PixelGroup(new Pixel(882, 216, 225, 230, 210));
-		playAgainButton = new PixelGroup(new Pixel(1128, 731, 9, 32, 40));
+		playAgainButton = new PixelGroup(new Pixel(1128, 731, 12, 20, 18));
 		cannotCreateCustomRunes = new PixelGroup(new Pixel(1074, 503, 132, 130, 119));
 		dailyReward = new PixelGroup(new Pixel(323, 296, 50, 40, 30));
 		levelUp = new PixelGroup(new Pixel(1017, 314, 238, 228, 208));
